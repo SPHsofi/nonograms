@@ -1,5 +1,5 @@
 const main = document.createElement('main');
-MediaSession.className = 'main';
+main.className = 'main';
 
 const headSection = document.createElement('section');
 headSection.className = 'head__section section';

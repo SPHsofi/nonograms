@@ -6,7 +6,7 @@ export function createGameSection() {
   gameSection.className = 'game__section section';
   
   const gameFill = createGameFill();
-  gameSection.append(gameFill);
+  gameSection.appendChild(gameFill);
 
   return gameSection; 
 }

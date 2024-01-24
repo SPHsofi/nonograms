@@ -1,20 +1,64 @@
+@font-face {
+  font-family: 'Vetka';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Crimson Text'),
+    url(/fonts/Vetka.woff);
+}
+
 :root {
   --background-color: #E6E2DD;
   --text-color: #373A36;
   --accent-color: #D48166;
 }
 
-* {
+/* * {
   margin: 0;
   padding: 0;
+} */
+
+.main {
+  /* margin: 0 auto; */
+  margin-top: 50px;
 }
 
 .body {
   background-color: var(--background-color);
   color: var(--text-color);
+  font-family: 'Vetka';
+  font-size: 24px;
+  margin: 0 auto;
 }
 
-.main {
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 1360px;
+}
+
+.head__section {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.level__btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pic__ul {
+  padding: 5px 10px;
+  font-size: 30px;
+  list-style: none;
+  position: relative;
+}
+
+.sub__ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  list-style: none;
 }

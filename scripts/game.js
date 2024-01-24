@@ -1,20 +1,31 @@
-import { pic } from "./pic.js"; 
+import { pic } from "./pic.js";
 
 // функция для создания секции с игрой
 export function createGameSection() {
   const gameSection = document.createElement('section');
   gameSection.className = 'game__section section';
-  
-  const gameFill = createGameFill();
+
+  const gameFill = createGameWraper();
   gameSection.appendChild(gameFill);
 
-  return gameSection; 
+  createGameFill();
+  return gameSection;
 }
 
 // функция для добавления игрового поля
-function createGameFill() {
+function createGameWraper() {
   const gameFill = document.createElement('div');
   gameFill.className = 'game-wraper';
+  
+  return gameFill;
+}
 
-  return gameFill; 
+function createGameFill() {
+  function picName() {
+    pic.forEach((image) => {
+      console.log(image.name);
+    });
+  }
+  
+  picName();
 }

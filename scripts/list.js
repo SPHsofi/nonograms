@@ -1,4 +1,4 @@
-import { pic } from "./pic.js";
+import { pics } from "./pics.js";
 
 export function createSelectUl() {
   const titleUl = document.createElement('ul');
@@ -39,7 +39,7 @@ function createSelectLi(picUl) {
 
 function takePic(picUl) {
 
-  pic.forEach((image) => {
+  pics.forEach((image) => {
     const option = document.createElement('li');
     option.textContent = image.name;
     option.className = 'name-game';
@@ -48,7 +48,7 @@ function takePic(picUl) {
 
   picUl.addEventListener('click', function(event) {
     const selectedImageName = event.target.textContent;
-    const selectedImage = pic.find((image) => image.name === selectedImageName);
+    const selectedImage = pics.find((image) => image.name === selectedImageName);
     if (selectedImage) {
       console.log(selectedImage);
     }

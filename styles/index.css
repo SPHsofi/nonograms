@@ -2,7 +2,7 @@
   font-family: 'Vetka';
   font-style: normal;
   font-weight: normal;
-  src: local('Crimson Text'),
+  src: local('Vetka'),
     url(/fonts/Vetka.woff);
 }
 
@@ -10,6 +10,7 @@
   --background-color: #E6E2DD;
   --text-color: #373A36;
   --accent-color: #D48166;
+  --game-fill-color: #efefee;
 }
 
 /* * {
@@ -41,6 +42,7 @@
 .head__section {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 100px;
 }
 
 .level__btn {
@@ -61,4 +63,68 @@
   position: absolute;
   top: 100%;
   list-style: none;
+}
+
+.game-wrapper,
+.columns,
+.rows,
+.game {
+  display: grid;
+}
+
+.game-wrapper {
+  grid-template-columns: max-content max-content;
+  grid-template-rows: max-content max-content;
+  grid-template-areas:
+    '. columns'
+    'rows game';
+}
+
+.columns {
+  grid-area: columns;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(5, 50px);
+  align-items: flex-end;
+}
+
+.rows {
+  grid-area: rows;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3,50px);
+  align-items: center;
+  margin-right: 10px;
+}
+
+.game {
+  grid-area: game;
+  grid-template-columns: repeat(5, 50px);
+  grid-template-rows: repeat(5, 50px);
+}
+
+.btn {
+  border: 0.5px solid var(--text-color);
+  background-color: var(--game-fill-color);
+}
+
+.btn__active {
+  background-color: var(--text-color);
+}
+
+.row-hints,
+.column-hints {
+  display: flex;
+  gap: 5px;
+}
+
+.row-hints {
+  justify-content: flex-end;
+}
+
+.column-hints {
+  flex-direction: column;
+  align-items: center;
+}
+
+.hints__span {
+  font: 600 24px/125% 'Vetka';
 }

@@ -1,20 +1,28 @@
 import { pics } from "./pics.js";
+import { createModalWin } from "./modalWin.js";
 
-const flower = pics[4].pic;
+const pic = pics[11]
+const flower = pic.pic;
 const flatArray = flower.flat();
+let level;
 
-// функция для создания секции с игрой
+if (pic.level == 'easy') {
+  level = "repeat(5, 50px)";
+} else if (pic.level == 'medium') {
+  level = "repeat(10, 50px)";
+} else if (pic.level == 'hard'){
+  level = "repeat(15, 50px)";
+};
+
 export function createGameSection() {
   const gameSection = document.createElement('section');
   gameSection.className = 'game__section section';
 
   const gameWrapper = createGameWraper();
   gameSection.appendChild(gameWrapper);
-  // createGameFill();
   return gameSection;
 }
 
-// функция для добавления игрового поля
 function createGameWraper() {
   const gameWrapper = document.createElement('div');
   gameWrapper.className = 'game-wrapper';
@@ -31,6 +39,8 @@ function createGameWraper() {
 
 function renderGameField() {
   const gameFill = document.createElement('div');
+  gameFill.style.gridTemplateColumns = level;
+  gameFill.style.gridTemplateRows = level;
   gameFill.className = 'game';
 
   flatArray.forEach(() => {
@@ -38,7 +48,6 @@ function renderGameField() {
     button.classList.add('btn');
     gameFill.appendChild(button);
 
-    // buttonsArray.push(button);
   })
 
   game(gameFill);
@@ -62,9 +71,9 @@ function renderRowHint() {
     rowHints[i] = rowHints[i] || [];
     rowHints[i].push(rowIndex);
   }
-  console.log(rowHints);
 
   const rowsFill = document.createElement('div');
+  rowsFill.style.gridTemplateRows = level;
   rowsFill.className = 'rows';
 
   rowHints.forEach((rows) => {
@@ -102,9 +111,9 @@ function renderColumnHint() {
     columHints[i] = columHints[i] || [];
     columHints[i].push(columnIndex);
   }
-  console.log(columHints);
 
   const columnsFill = document.createElement('div');
+  columnsFill.style.gridTemplateColumns = level;
   columnsFill.className = 'columns';
 
   columHints.forEach((column, i, array) => {
@@ -136,12 +145,10 @@ function countTrueClicks() {
   return count;
 }
 
-
 function game(gameFill) {
   let winIndex = 0
   const buttons = gameFill.querySelectorAll('.btn');
 
-  // const buttons = document.querySelectorAll('.btn')
   buttons.forEach((btn, index) => {
     btn.addEventListener('click', () => {
       if (flatArray[index].isShouldClick) {
@@ -164,10 +171,14 @@ function game(gameFill) {
         }
       }
       const trueClick = countTrueClicks();
-      // console.log(winIndex)
       if (winIndex === trueClick) {
         setTimeout(() => {
-          alert('win')
+          // alert('win')
+          const modalSection = createModalWin();
+          document.body.appendChild(modalSection);
+
+          const modal = document.querySelector('.modal-win__section');
+          modal.classList.replace('modal-win__section', 'modal-visible__section');
         }, 200);
       }
     })

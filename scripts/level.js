@@ -1,10 +1,10 @@
 export function createCheckbox() {
   const btnDiv = document.createElement('div');
-  btnDiv.className = 'level__btn';
+  btnDiv.className = 'level-wrapper__btn';
 
-  const labelEasy = createLabelWithCheckbox("Easy", "easy-level__chbox input", "checkbox");
-  const labelMedium = createLabelWithCheckbox("Medium", "medium-level__chbox input", "checkbox");
-  const labelHard = createLabelWithCheckbox("Hard", "hard-level__chbox input", "checkbox");
+  const labelEasy = levelButtons('Easy');
+  const labelMedium = levelButtons('Medium');
+  const labelHard = levelButtons('Hard');
 
   btnDiv.appendChild(labelEasy);
   btnDiv.appendChild(labelMedium);
@@ -13,52 +13,34 @@ export function createCheckbox() {
   return btnDiv;
 }
 
-function createLabelWithCheckbox(labelText, checkboxClass, checkboxType) {
-  const label = document.createElement('label');
-  label.innerHTML = labelText;
-  label.className = 'level__label';
+function levelButtons(text) {
+  const button = document.createElement('button');
+  button.className = 'level__btn';
+  button.textContent = text;
 
-  const checkbox = document.createElement('input');
-  checkbox.type = checkboxType;
-  checkbox.className = checkboxClass;
+  button.addEventListener('click', () => {
+    button.className = 'select-level';
+  })
 
-  label.appendChild(checkbox);
-
-  return label;
+  return button;
 }
 
+let levelSort = [];
+export function toggleSortArray(levelDiv, render) {
+  const buttons = levelDiv.querySelectorAll('.level__btn');
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      let index = levelSort.indexOf(button.textContent.toLowerCase());
+      if (index !== -1) {
+        levelSort.splice(index, 1);
+        button.className = 'level__btn';
+      } else {
+        levelSort.push(button.textContent.toLowerCase());
+        button.className = 'select-level';
+      }
 
-// function createLabel() {
-//   const labelEasy = document.createElement('label');
-//   labelEasy.innerHTML = "Easy";
-
-//   const labelMedium = document.createElement('label');
-//   labelMedium.innerHTML = "Medium";
-
-//   const labelHard = document.createElement('label');
-//   labelHard.innerHTML = "Hard";
-// }
-
-// function createBtn() {
-//   const easy = document.createElement('input');
-//   const medium = document.createElement('input');
-//   const hard = document.createElement('input');
-
-//   easy.className = 'easy-level__chbox input';
-//   medium.className = 'medium-level__chbox input';
-//   hard.className = 'hard-level__chbox input';
-
-//   easy.type = 'checkbox';
-//   medium.type = 'checkbox';
-//   hard.type = 'checkbox';
-
-//   labelEasy.appendChild(easy);
-//   labelMedium.appendChild(medium);
-//   labelHard.appendChild(hard);
-
-//   btnDiv.appendChild(labelEasy);
-//   btnDiv.appendChild(labelMedium);
-//   btnDiv.appendChild(labelHard);
-
-//   return btnDiv;
-// }
+      render(levelSort)
+      console.log(levelSort);
+    })
+  })
+}

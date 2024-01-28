@@ -1,56 +1,58 @@
 import { pics } from "./pics.js";
 
-export function createSelectUl() {
-  const titleUl = document.createElement('ul');
-  titleUl.className = 'pic__ul list';
 
-  const picUl = document.createElement('ul');
-  picUl.className = 'sub__ul list'
+export function createSelectUl(filtredPics) {
+  const selectPic = document.createElement('div');
+  selectPic.classList = 'select-pic__wrapper'
 
-  const titleLi = createSelectLi(picUl);
-  // const picUl = takePic();
+  const renderList = openList(selectPic, filtredPics);
 
-  titleUl.appendChild(titleLi);
-  titleLi.appendChild(picUl);
-  // titleUl.appendChild(picUl);
-  takePic(picUl); 
-  return titleUl;
+  selectPic.appendChild(renderList);
+  return selectPic;
 }
 
-function createSelectLi(picUl) {
-  const titleLi = document.createElement('li');
-  titleLi.value = '';
-  titleLi.textContent = 'Select an image';
-  titleLi.disabled = true;
-  titleLi.selected = true;
+function openList(selectPic, filtredPics) {
+  const titleBtn = document.createElement('button');
+  titleBtn.className = 'pic__btn';
+  titleBtn.textContent = 'Select an image';
 
+  const list = renderList(filtredPics);
+  selectPic.appendChild(list);
 
-  picUl.style.display = 'none';
-  titleLi.addEventListener('click', function() {
-      if (picUl.style.display === 'none') {
-        picUl.style.display = 'block';
-      } else {
-        picUl.style.display = 'none';
-      }
-    });
-
-  return titleLi;
-}
-
-function takePic(picUl) {
-
-  pics.forEach((image) => {
-    const option = document.createElement('li');
-    option.textContent = image.name;
-    option.className = 'name-game';
-    picUl.appendChild(option);
-  });
-
-  picUl.addEventListener('click', function(event) {
-    const selectedImageName = event.target.textContent;
-    const selectedImage = pics.find((image) => image.name === selectedImageName);
-    if (selectedImage) {
-      console.log(selectedImage);
+  titleBtn.addEventListener('click', () => {
+    if (!list.classList.contains("visible")) {
+      list.classList.add("visible");
+    } else {
+      list.classList.remove("visible");
     }
-  });
+  })
+
+  return titleBtn
+}
+
+function renderList(filtredPics) {
+
+  const listUl = document.createElement('ul');
+  listUl.classList.add("select-list");
+
+  if (filtredPics == undefined || filtredPics.length == 0) {
+    sortList(listUl,pics);
+    console.log(pics)
+  }
+  else {
+    sortList(listUl, filtredPics);
+    console.log(filtredPics)
+  }
+
+  return listUl;
+}
+
+function sortList(listUl, arr) {
+
+  arr.forEach((pic) => {
+    const listLi = document.createElement('li');
+    listLi.textContent = pic.name;
+    listLi.className = 'name-game';
+    listUl.appendChild(listLi);
+  })
 }

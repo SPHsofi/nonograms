@@ -31,6 +31,11 @@
   margin-bottom: 100px;
 }
 
+.game__section {
+  flex-direction: column;
+  gap: 40px;
+}
+
 .level-wrapper__btn {
   display: flex;
   flex-direction: row;
@@ -78,6 +83,10 @@
   padding: 20px;
 }
 
+.name-game {
+  cursor: pointer;
+}
+
 .game-wrapper,
 .columns,
 .rows,
@@ -91,6 +100,20 @@
   grid-template-areas:
     '. columns'
     'rows game';
+    order: 1;
+}
+
+.info-wrapper {
+  order: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.label-pic,
+.size-pic {
+  font: 600 30px/125% 'san serif';
 }
 
 .columns {

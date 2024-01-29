@@ -1,66 +1,75 @@
-import { pics } from "./pics.js";
 import { createModalWin } from "./modalWin.js";
+import { timer } from "./timer.js";
+import { createTimer } from "./timer.js";
 
-const pic = pics[11]
-const flower = pic.pic;
-const flatArray = flower.flat();
-let level;
-
-if (pic.level == 'easy') {
-  level = "repeat(5, 50px)";
-} else if (pic.level == 'medium') {
-  level = "repeat(10, 50px)";
-} else if (pic.level == 'hard'){
-  level = "repeat(15, 50px)";
-};
-
-export function createGameSection() {
+export function createGameSection(array, level) {
   const gameSection = document.createElement('section');
   gameSection.className = 'game__section section';
 
-  const gameWrapper = createGameWraper();
+  const gameWrapper = createGameWraper(array, level);
+
   gameSection.appendChild(gameWrapper);
+
   return gameSection;
 }
 
-function createGameWraper() {
+export function createInfoWrapper(name, size) {
+  const infoWrapper = document.createElement('div');
+  infoWrapper.className = 'info-wrapper';
+
+  const labelPic = document.createElement('h1');
+  labelPic.className = 'label-pic'
+  labelPic.textContent = `Name: ${name} - `;
+
+  const sizePic = document.createElement('p');
+  sizePic.className = 'size-pic';
+  sizePic.textContent = `${size}x${size}`;
+
+  infoWrapper.appendChild(labelPic);
+  infoWrapper.appendChild(sizePic);
+
+return infoWrapper;
+}
+
+function createGameWraper(array, level) {
   const gameWrapper = document.createElement('div');
   gameWrapper.className = 'game-wrapper';
 
-  const gameFill = renderGameField();
-  const rowsFill = renderRowHint();
-  const columnsFill = renderColumnHint();
+  const gameFill = renderGameField(array, level);
+  const rowsFill = renderRowHint(array, level);
+  const columnsFill = renderColumnHint(array, level);
 
   gameWrapper.appendChild(columnsFill);
   gameWrapper.appendChild(rowsFill);
   gameWrapper.appendChild(gameFill);
+
   return gameWrapper;
 }
 
-function renderGameField() {
+function renderGameField(array, level) {
   const gameFill = document.createElement('div');
   gameFill.style.gridTemplateColumns = level;
   gameFill.style.gridTemplateRows = level;
   gameFill.className = 'game';
 
-  flatArray.forEach(() => {
+  array.flat().forEach(() => {
     const button = document.createElement('button');
     button.classList.add('btn');
     gameFill.appendChild(button);
 
   })
 
-  game(gameFill);
+  game(gameFill, array);
   return gameFill;
 }
 
-function renderRowHint() {
+function renderRowHint(array, level) {
   const rowHints = [];
 
-  for (let i = 0; i < flower.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     let rowIndex = 0;
-    for (let j = 0; j < flower[i].length; j++) {
-      if (flower[i][j].isShouldClick) {
+    for (let j = 0; j < array[i].length; j++) {
+      if (array[i][j].isShouldClick) {
         ++rowIndex;
       } else {
         rowHints[i] = rowHints[i] || [];
@@ -94,13 +103,13 @@ function renderRowHint() {
   return rowsFill;
 }
 
-function renderColumnHint() {
+function renderColumnHint(array, level) {
   const columHints = [];
 
-  for (let i = 0; i < flower[0].length; i++) {
+  for (let i = 0; i < array[0].length; i++) {
     let columnIndex = 0;
-    for (let j = 0; j < flower.length; j++) {
-      if (flower[j][i].isShouldClick) {
+    for (let j = 0; j < array.length; j++) {
+      if (array[j][i].isShouldClick) {
         ++columnIndex;
       } else {
         columHints[i] = columHints[i] || [];
@@ -116,7 +125,7 @@ function renderColumnHint() {
   columnsFill.style.gridTemplateColumns = level;
   columnsFill.className = 'columns';
 
-  columHints.forEach((column, i, array) => {
+  columHints.forEach((column) => {
     const div = document.createElement('div')
     div.classList.add('column-hints')
     column.forEach(column => {
@@ -133,11 +142,11 @@ function renderColumnHint() {
   return columnsFill;
 }
 
-function countTrueClicks() {
+function countTrueClicks(array) {
   let count = 0;
-  for (let i = 0; i < flower.length; i++) {
-    for (let j = 0; j < flower[i].length; j++) {
-      if (flower[i][j].isShouldClick === true) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      if (array[i][j].isShouldClick === true) {
         count++;
       }
     }
@@ -145,13 +154,18 @@ function countTrueClicks() {
   return count;
 }
 
-function game(gameFill) {
+const timerWrapper = createTimer();
+const timerTag = timerWrapper.querySelector('.timer');
+console.log(timerTag)
+
+function game(gameFill, array) {
   let winIndex = 0
   const buttons = gameFill.querySelectorAll('.btn');
 
   buttons.forEach((btn, index) => {
     btn.addEventListener('click', () => {
-      if (flatArray[index].isShouldClick) {
+      // true
+      if (array.flat()[index].isShouldClick) {
         if (btn.classList.contains('btn__active')) {
           btn.classList.remove('btn__active')
           --winIndex
@@ -160,6 +174,7 @@ function game(gameFill) {
           btn.classList.add('btn__active')
           ++winIndex
         }
+        // false
       } else {
         if (btn.classList.contains('btn__active')) {
           btn.classList.remove('btn__active')
@@ -170,10 +185,10 @@ function game(gameFill) {
           --winIndex
         }
       }
-      const trueClick = countTrueClicks();
+      const trueClick = countTrueClicks(array);
+      console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`)
       if (winIndex === trueClick) {
         setTimeout(() => {
-          // alert('win')
           const modalSection = createModalWin();
           document.body.appendChild(modalSection);
 
@@ -181,6 +196,8 @@ function game(gameFill) {
           modal.classList.replace('modal-win__section', 'modal-visible__section');
         }, 200);
       }
+      timer.startTimer(timerTag);
+      timer.isStart = true;
     })
   })
 }

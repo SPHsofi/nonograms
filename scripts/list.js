@@ -1,5 +1,5 @@
 import { pics } from "./pics.js";
-
+import { renderField, renderInfoGame } from "./index.js";
 
 export function createSelectUl(filtredPics) {
   const selectPic = document.createElement('div');
@@ -37,7 +37,7 @@ function renderList(filtredPics) {
 
   if (filtredPics == undefined || filtredPics.length == 0) {
     sortList(listUl,pics);
-    console.log(pics)
+    // console.log(pics)
   }
   else {
     sortList(listUl, filtredPics);
@@ -47,6 +47,7 @@ function renderList(filtredPics) {
   return listUl;
 }
 
+let gameFieds = []
 function sortList(listUl, arr) {
 
   arr.forEach((pic) => {
@@ -55,4 +56,19 @@ function sortList(listUl, arr) {
     listLi.className = 'name-game';
     listUl.appendChild(listLi);
   })
+
+  listUl.addEventListener('click', function(event) {
+    const selectedImageName = event.target.textContent;
+    const selectedImage = pics.find((pic) => pic.name === selectedImageName);
+    if (selectedImage) {
+      gameFieds = selectedImage.pic.map(item => {
+        item.isSelected = false;
+        item.isEmpty = false;
+        return item;
+      })
+      renderField(gameFieds, selectedImage.size);
+      renderInfoGame(selectedImage.name, selectedImage.size);
+      // console.log(selectedImage.name);
+    }
+  });
 }

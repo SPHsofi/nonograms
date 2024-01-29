@@ -1,7 +1,8 @@
-import { createGameSection } from "./game.js";
+import { createGameSection, createInfoWrapper } from "./game.js";
 import { createSelectUl } from "./list.js";
 import { createCheckbox, toggleSortArray } from "./level.js";
 import { pics } from "./pics.js";
+import { createTimer } from "./timer.js";
 
 const main = document.createElement('main');
 main.className = 'main';
@@ -9,18 +10,49 @@ main.className = 'main';
 const headSection = document.createElement('section');
 headSection.className = 'head__section section';
 
-const levelDiv = createCheckbox();
-const gameSection = createGameSection();
-let optionSection = createSelectUl();
-// const modalSection = createModalSection();
+function renderFirstPic() {
+  const filterPics = pics.filter((pic) => pic.size == 5)
+  const randomIndex = Math.floor(Math.random() * filterPics.length);
+  const randomGameFill = pics[randomIndex];
 
-headSection.appendChild(levelDiv)
+  return randomGameFill;
+}
+
+const randomGameFill = renderFirstPic();
+
+const timerSection = createTimer();
+const levelDiv = createCheckbox();
+let gameSection = createGameSection(randomGameFill.pic, "repeat(5, 3vw)");
+let optionSection = createSelectUl();
+let infoWrapper = createInfoWrapper(randomGameFill.name, randomGameFill.size);
+
+gameSection.appendChild(infoWrapper);
+
+
+headSection.appendChild(timerSection);
+headSection.appendChild(levelDiv);
 headSection.appendChild(optionSection);
 
-// main.appendChild(modalSection);
 main.appendChild(headSection);
 main.appendChild(gameSection);
 
+export function renderInfoGame(name, size) {
+  infoWrapper = createInfoWrapper(name, size);
+  gameSection.appendChild(infoWrapper);
+}
+
+
+export function renderField(array, number) {
+  main.removeChild(gameSection)
+  if (number == 5) {
+    gameSection = createGameSection(array, "repeat(5, 2.5vw)");
+  } else if (number == 10) {
+    gameSection = createGameSection(array, "repeat(10, 2.5vw)");
+  } else {
+    gameSection = createGameSection(array, "repeat(15, 2.5vw)");
+  }
+  main.appendChild(gameSection)
+}
 
 function renderLevel(levels) {
   let filtredPics = pics.filter(pic => levels.includes(pic.level))
@@ -31,5 +63,4 @@ function renderLevel(levels) {
 
 toggleSortArray(levelDiv, renderLevel);
 
-// selectLevel()
 document.body.appendChild(main);

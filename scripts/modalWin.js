@@ -20,7 +20,13 @@ export function createModalWin() {
   buttonPics.className = 'modal-pics__btn'
   buttonPics.textContent = 'Select a picture';
   
-  buttonExit = buttonExit(modalSection);
+  const buttonExit = document.createElement('button');
+  buttonExit.className = 'modal-exit__btn'
+  buttonExit.textContent = 'Exit';
+
+  buttonExit.addEventListener('click', () =>{
+    modalSection.classList.replace('modal-visible__section', 'modal-win__section');
+  })
 
   btnContainer.appendChild(buttonExit);
   btnContainer.appendChild(buttonPics);
@@ -32,16 +38,4 @@ export function createModalWin() {
   modalSection.appendChild(modalWrapper);
 
   return modalSection;
-}
-
-function buttonExit(modalSection) {
-  const buttonExit = document.createElement('button');
-  buttonExit.className = 'modal-exit__btn'
-  buttonExit.textContent = 'Exit';
-
-  buttonExit.addEventListener('click', () =>{
-    modalSection.classList.replace('modal-visible__section', 'modal-win__section');
-  })
-
-  return buttonExit;
 }

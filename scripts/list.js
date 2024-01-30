@@ -3,7 +3,7 @@ import { renderField, renderInfoGame } from "./index.js";
 
 export function createSelectUl(filtredPics) {
   const selectPic = document.createElement('div');
-  selectPic.classList = 'select-pic__wrapper'
+  selectPic.classList = 'select-pic__wrapper';
 
   const renderList = openList(selectPic, filtredPics);
 
@@ -22,13 +22,23 @@ function openList(selectPic, filtredPics) {
   titleBtn.addEventListener('click', () => {
     if (!list.classList.contains("visible")) {
       list.classList.add("visible");
+      document.addEventListener('click', closeListOnClick);
     } else {
       list.classList.remove("visible");
+      document.removeEventListener('click', closeListOnClick);
     }
   })
 
-  return titleBtn
+  function closeListOnClick(event) {
+    if (!selectPic.contains(event.target)) {
+      list.classList.remove("visible");
+      document.removeEventListener('click', closeListOnClick);
+    }
+  }
+
+  return titleBtn;
 }
+
 
 function renderList(filtredPics) {
 
@@ -37,7 +47,6 @@ function renderList(filtredPics) {
 
   if (filtredPics == undefined || filtredPics.length == 0) {
     sortList(listUl,pics);
-    // console.log(pics)
   }
   else {
     sortList(listUl, filtredPics);
@@ -47,28 +56,59 @@ function renderList(filtredPics) {
   return listUl;
 }
 
+function renderTitleList(className, size) {
+
+  const levelUl = document.createElement('ul');
+  levelUl.className = className;
+  levelUl.textContent = size;
+
+  return levelUl
+}
+
 let gameFieds = []
 function sortList(listUl, arr) {
+
+  const easyUl = renderTitleList('easy-title title', '5x5')
+  const mediumUl = renderTitleList('medium-title title', '10x10')
+  const hardUl = renderTitleList('hard-title title', '15x15')
 
   arr.forEach((pic) => {
     const listLi = document.createElement('li');
     listLi.textContent = pic.name;
     listLi.className = 'name-game';
-    listUl.appendChild(listLi);
-  })
+    // listUl.appendChild(listLi);
 
-  listUl.addEventListener('click', function(event) {
-    const selectedImageName = event.target.textContent;
-    const selectedImage = pics.find((pic) => pic.name === selectedImageName);
-    if (selectedImage) {
-      gameFieds = selectedImage.pic.map(item => {
-        item.isSelected = false;
-        item.isEmpty = false;
-        return item;
-      })
-      renderField(gameFieds, selectedImage.size);
-      renderInfoGame(selectedImage.name, selectedImage.size);
-      // console.log(selectedImage.name);
+    if (pic.size === 5) {
+      easyUl.appendChild(listLi);
+    } else if (pic.size === 10) {
+      mediumUl.appendChild(listLi);
+    } else if (pic.size === 15) {
+      hardUl.appendChild(listLi);
     }
-  });
+
+    listUl.appendChild(easyUl);
+    listUl.appendChild(mediumUl);
+    listUl.appendChild(hardUl);
+
+    // listUl.removeEventListener('click');
+
+    easyUl.addEventListener('click', handleImageClick);
+    mediumUl.addEventListener('click', handleImageClick);
+    hardUl.addEventListener('click', handleImageClick);
+  
+  })
+}
+
+function handleImageClick(event) {
+  const selectedImageName = event.target.textContent;
+  const selectedImage = pics.find((pic) => pic.name === selectedImageName);
+  if (selectedImage) {
+    gameFieds = selectedImage.pic.map(item => {
+      item.isSelected = false;
+      item.isEmpty = false;
+      return item;
+    });
+    renderField(gameFieds, selectedImage.size);
+    renderInfoGame(selectedImage.name, selectedImage.size);
+  }
 }

@@ -55,11 +55,19 @@
   background-color: var(--game-fill-color);
 }
 
+.select-level {
+  background-color: rgba(235, 150, 121, 0.5);
+  border: 1px solid rgba(235, 150, 121, 0.5);
+  padding: 5px;
+  padding: 5px 10px;
+  font: 400 30px/125% 'san serif';
+}
+
 .select-pic__wrapper {
   display: flex;
 }
 
-.select-list{
+.select-list {
   display: none;
 }
 
@@ -96,7 +104,7 @@
 }
 
 .timer {
-  font: 600 34px/125% 'san serif' ;
+  font: 600 34px/125% 'san serif';
 }
 
 /* Game section */
@@ -109,7 +117,7 @@
   padding-left: 40px;
 }
 
-.label-pic{
+.label-pic {
   font: 600 40px/125% 'san serif';
   margin: 0;
 }
@@ -127,7 +135,7 @@
   grid-template-areas:
     '. columns'
     'rows game';
-    order: 1;
+  order: 1;
 }
 
 .columns {
@@ -218,7 +226,7 @@
   gap: 10px;
 }
 
-.modal-exit__btn{
+.modal-exit__btn {
   border: none;
   padding: 10px 15px;
   cursor: pointer;
@@ -232,4 +240,45 @@
   padding: 15px 15px;
   cursor: pointer;
   font: 24px/125% 'san serif';
+}
+
+@media screen and (max-width: 1050px) {
+  .head__section {
+    margin-bottom: 80px;
+}
+}
+
+@media screen and (max-width: 900px) {
+
+  .level__btn,
+  .random__btn,
+  .pic__btn {
+    padding: 8px 8px;
+    font: 400 24px/125% 'san serif';
+  }
+
+  .timer {
+    font: 600 30px/125% 'san serif';
+    ;
+  }
+
+  .head__section {
+    margin-bottom: 60px;
+  }
+
+  .label-pic {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hints__span {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .hints__span {
+    font-size: 14px;
+  }
 }

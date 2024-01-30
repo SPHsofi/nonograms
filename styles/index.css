@@ -1,8 +1,8 @@
 :root {
   --background-color: #E6E2DD;
   --text-color: #373A36;
-  --accent-color: #D48166;
-  --game-fill-color: #efefee;
+  --accent-color: #eb9679;
+  --game-fill-color: #ffffff;
 }
 
 .main {
@@ -25,15 +25,16 @@
   max-width: 1360px;
 }
 
+/* header section */
 .head__section {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 100px;
 }
 
-.game__section {
-  flex-direction: column;
-  gap: 40px;
+.random__btn {
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
 }
 
 .level-wrapper__btn {
@@ -42,32 +43,20 @@
   gap: 20px;
 }
 
-.level__btn {
-  border: 1px solid var(--text-color);
-  padding: 5px 10px;
+.level__btn,
+.random__btn,
+.pic__btn {
+  padding: 10px 10px;
   font: 400 30px/125% 'san serif';
-  background-color: var(--game-fill-color);
 }
 
-.select-level {
-  background-color: #D48166;
-  opacity: 0.5;
-  border: 1px solid var(--text-color);
-  padding: 5px 10px;
-  font: 400 30px/125% 'san serif';
+.level__btn {
+  border: 1px solid var(--game-fill-color);
+  background-color: var(--game-fill-color);
 }
 
 .select-pic__wrapper {
   display: flex;
-
-}
-
-.pic__btn {
-  order: 0;
-  padding: 5px 10px;
-  border: 2px solid var(--accent-color);
-  font: 400 30px/125% 'san serif';
-  background: none;
 }
 
 .select-list{
@@ -95,8 +84,34 @@
   cursor: pointer;
 }
 
+.game__section {
+  flex-direction: column;
+  gap: 40px;
+}
+
+.pic__btn {
+  order: 0;
+  border: 2px solid var(--accent-color);
+  background: none;
+}
+
 .timer {
   font: 600 34px/125% 'san serif' ;
+}
+
+/* Game section */
+.info-wrapper {
+  order: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.label-pic{
+  font: 600 40px/125% 'san serif';
+  margin: 0;
 }
 
 .game-wrapper,
@@ -113,21 +128,6 @@
     '. columns'
     'rows game';
     order: 1;
-}
-
-.info-wrapper {
-  order: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  padding-left: 40px;
-}
-
-.label-pic,
-.size-pic {
-  font: 600 40px/125% 'san serif';
-  margin: 0;
 }
 
 .columns {
@@ -148,23 +148,10 @@
   border: 2px solid;
 }
 
-.btn {
-  border: 0.5px solid var(--text-color);
-  background-color: var(--game-fill-color);
-}
-
-.btn__active {
-  background-color: var(--text-color);
-}
-
-.row-hints,
-.column-hints {
+.column-hints,
+.row-hints {
   display: flex;
   gap: 10px;
-}
-
-.row-hints {
-  justify-content: flex-end;
 }
 
 .column-hints {
@@ -176,10 +163,20 @@
   font: 600 24px/125% 'san serif';
 }
 
-.modal-win__section {
-  display: none;
+.row-hints {
+  justify-content: flex-end;
 }
 
+.btn {
+  border: 0.5px solid var(--text-color);
+  background-color: var(--game-fill-color);
+}
+
+.btn__active {
+  background-color: var(--text-color);
+}
+
+/* Modal section */
 .modal-visible__section,
 .modal-win__wrapper {
   display: flex;
@@ -201,16 +198,19 @@
   flex-direction: column;
   border: 2px solid var(--text-color);
   background-color: var(--background-color);
-  width: 400px;
-  height: 300px;
+  width: 500px;
+  height: 400px;
+  justify-content: space-evenly;
 }
 
-.modal-pics__btn {
-  border: none;
-  background-color: var(--accent-color);
-  padding: 10px 15px;
-  cursor: pointer;
-  font: 24px/125% 'san serif';
+.modal-title {
+  font: 600 50px/125% 'san serif';
+  margin: 0;
+}
+
+.modal-text {
+  font: 400 40px/125% 'san serif';
+  margin: 0;
 }
 
 .btn-container {
@@ -219,8 +219,17 @@
 }
 
 .modal-exit__btn{
-  border: 2px solid var(--accent-color);
+  border: none;
   padding: 10px 15px;
+  cursor: pointer;
+  font: 400 35px/125% 'san serif';
+  background-color: var(--accent-color);
+}
+
+.modal-pics__btn {
+  border: none;
+  background-color: var(--accent-color);
+  padding: 15px 15px;
   cursor: pointer;
   font: 24px/125% 'san serif';
 }

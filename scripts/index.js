@@ -26,7 +26,7 @@ export const timerTag = timerSection.querySelector('.timer');
 const levelDiv = createCheckbox();
 let gameSection = createGameSection(randomGameFill.pic, "repeat(5, 3vw)");
 let optionSection = createSelectUl();
-let infoWrapper = createInfoWrapper(randomGameFill.name, randomGameFill.size);
+let infoWrapper = createInfoWrapper(randomGameFill.name);
 
 gameSection.appendChild(infoWrapper);
 
@@ -38,11 +38,10 @@ headSection.appendChild(optionSection);
 main.appendChild(headSection);
 main.appendChild(gameSection);
 
-export function renderInfoGame(name, size) {
-  infoWrapper = createInfoWrapper(name, size);
+export function renderInfoGame(name) {
+  infoWrapper = createInfoWrapper(name);
   gameSection.appendChild(infoWrapper);
 }
-
 
 export function renderField(array, number) {
   main.removeChild(gameSection)
@@ -61,7 +60,7 @@ function renderLevel(levels) {
   headSection.removeChild(optionSection)
   optionSection = createSelectUl(filtredPics)
   headSection.appendChild(optionSection)
-  
+
 }
 
 toggleSortArray(levelDiv, renderLevel);

@@ -13,20 +13,15 @@ export function createGameSection(array, level) {
   return gameSection;
 }
 
-export function createInfoWrapper(name, size) {
+export function createInfoWrapper(name) {
   const infoWrapper = document.createElement('div');
   infoWrapper.className = 'info-wrapper';
 
   const labelPic = document.createElement('h1');
   labelPic.className = 'label-pic'
-  labelPic.textContent = `Name: ${name} - `;
-
-  const sizePic = document.createElement('p');
-  sizePic.className = 'size-pic';
-  sizePic.textContent = `${size}x${size}`;
+  labelPic.textContent = `${name}`;
 
   infoWrapper.appendChild(labelPic);
-  infoWrapper.appendChild(sizePic);
 
 return infoWrapper;
 }

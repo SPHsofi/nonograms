@@ -109,6 +109,6 @@ function handleImageClick(event) {
       return item;
     });
     renderField(gameFieds, selectedImage.size);
-    renderInfoGame(selectedImage.name, selectedImage.size);
+    renderInfoGame(selectedImage.name);
   }
 }

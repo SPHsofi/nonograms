@@ -15,10 +15,6 @@ export function createModalWin() {
   const levelText = document.createElement('p');
   levelText.className = 'modal-text';
   levelText.textContent = 'Level passed';
-
-  const buttonPics = document.createElement('button');
-  buttonPics.className = 'modal-pics__btn'
-  buttonPics.textContent = 'Select a picture';
   
   const buttonExit = document.createElement('button');
   buttonExit.className = 'modal-exit__btn'
@@ -29,7 +25,6 @@ export function createModalWin() {
   })
 
   btnContainer.appendChild(buttonExit);
-  btnContainer.appendChild(buttonPics);
 
   modalWrapper.appendChild(header);
   modalWrapper.appendChild(levelText);

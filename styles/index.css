@@ -87,9 +87,6 @@
 
 .title {
   list-style: none;
-  /* background-color: #D48166; */
-  /* opacity: 0.4; */
-
   padding: 20px;
 }
 
@@ -124,32 +121,30 @@
   flex-direction: row;
   gap: 10px;
   align-items: center;
+  padding-left: 40px;
 }
 
 .label-pic,
 .size-pic {
-  font: 600 30px/125% 'san serif';
+  font: 600 40px/125% 'san serif';
+  margin: 0;
 }
 
 .columns {
   grid-area: columns;
   grid-template-rows: 1fr;
-  /* grid-template-columns: repeat(5, 50px); */
   align-items: flex-end;
 }
 
 .rows {
   grid-area: rows;
   grid-template-columns: 1fr;
-  /* grid-template-rows: repeat(5, 50px); */
   align-items: center;
   margin-right: 10px;
 }
 
 .game {
   grid-area: game;
-  /* grid-template-columns: repeat(5, 50px);
-  grid-template-rows: repeat(5, 50px); */
   border: 2px solid;
 }
 

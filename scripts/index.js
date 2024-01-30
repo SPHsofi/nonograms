@@ -21,6 +21,8 @@ function renderFirstPic() {
 const randomGameFill = renderFirstPic();
 
 const timerSection = createTimer();
+export const timerTag = timerSection.querySelector('.timer');
+
 const levelDiv = createCheckbox();
 let gameSection = createGameSection(randomGameFill.pic, "repeat(5, 3vw)");
 let optionSection = createSelectUl();
@@ -59,6 +61,7 @@ function renderLevel(levels) {
   headSection.removeChild(optionSection)
   optionSection = createSelectUl(filtredPics)
   headSection.appendChild(optionSection)
+  
 }
 
 toggleSortArray(levelDiv, renderLevel);

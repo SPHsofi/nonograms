@@ -1,6 +1,6 @@
 import { createModalWin } from "./modalWin.js";
 import { timer } from "./timer.js";
-import { createTimer } from "./timer.js";
+import { timerTag } from "./index.js";
 
 export function createGameSection(array, level) {
   const gameSection = document.createElement('section');
@@ -153,10 +153,6 @@ function countTrueClicks(array) {
   }
   return count;
 }
-
-const timerWrapper = createTimer();
-const timerTag = timerWrapper.querySelector('.timer');
-console.log(timerTag)
 
 function game(gameFill, array) {
   let winIndex = 0

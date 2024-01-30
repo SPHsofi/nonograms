@@ -3,6 +3,7 @@ import { createSelectUl } from "./list.js";
 import { createCheckbox, toggleSortArray } from "./level.js";
 import { pics } from "./pics.js";
 import { createTimer } from "./timer.js";
+import { renderRandomBtn } from "./randomPic.js";
 
 const main = document.createElement('main');
 main.className = 'main';
@@ -27,10 +28,12 @@ const levelDiv = createCheckbox();
 let gameSection = createGameSection(randomGameFill.pic, "repeat(5, 3vw)");
 let optionSection = createSelectUl();
 let infoWrapper = createInfoWrapper(randomGameFill.name);
+const randomBtn = renderRandomBtn();
 
 gameSection.appendChild(infoWrapper);
 
 
+headSection.appendChild(randomBtn);
 headSection.appendChild(timerSection);
 headSection.appendChild(levelDiv);
 headSection.appendChild(optionSection);

@@ -208,7 +208,6 @@ function game(gameFill, array) {
       const crossSound = document.querySelector('.cross__audio');
       crossSound.play();
       e.preventDefault();
-      console.log(array.flat()[index]);
       if (!btn.classList.contains('btn__cross') && !btn.classList.contains('btn__active')) {
         btn.classList.add('btn__cross');
         btn.textContent = 'X';

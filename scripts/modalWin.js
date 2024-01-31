@@ -23,6 +23,9 @@ export function createModalWin() {
   buttonExit.textContent = 'Exit';
 
   buttonExit.addEventListener('click', () =>{
+    const exitSound = document.querySelector('.exit__audio');
+    exitSound.play();
+
     modalSection.classList.replace('modal-visible__section', 'modal-win__section');
     timer.seconds = 0;
     timer.counter = 0;

@@ -23,7 +23,7 @@ export function createInfoWrapper(name) {
 
   infoWrapper.appendChild(labelPic);
 
-return infoWrapper;
+  return infoWrapper;
 }
 
 function createGameWraper(array, level) {
@@ -155,13 +155,15 @@ function game(gameFill, array) {
 
   buttons.forEach((btn, index) => {
     btn.addEventListener('click', () => {
+      const selectSound = document.querySelector('.select__audio');
+      selectSound.play();
       // true
       if (array.flat()[index].isShouldClick) {
         if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
           btn.classList.add('btn__active');
           ++winIndex;
         }
-        else if (btn.classList.contains('btn__active')){
+        else if (btn.classList.contains('btn__active')) {
           btn.classList.remove('btn__active');
           --winIndex;
         }
@@ -178,11 +180,14 @@ function game(gameFill, array) {
           ++winIndex;
         }
       }
-      
+
       const trueClick = countTrueClicks(array);
       console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`)
       if (winIndex === trueClick) {
         setTimeout(() => {
+          const winSound = document.querySelector('.win__audio');
+          winSound.play();
+
           timer.stopTimer();
           timer.isStart = false;
 
@@ -200,6 +205,8 @@ function game(gameFill, array) {
 
   buttons.forEach((btn, index) => {
     btn.addEventListener('contextmenu', (e) => {
+      const crossSound = document.querySelector('.cross__audio');
+      crossSound.play();
       e.preventDefault();
       console.log(array.flat()[index]);
       if (!btn.classList.contains('btn__cross') && !btn.classList.contains('btn__active')) {

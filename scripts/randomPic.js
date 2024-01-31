@@ -10,6 +10,9 @@ export function renderRandomBtn() {
   randomBtn.textContent = 'Random picture';
 
   randomBtn.onclick = function() {
+    const tapSound = document.querySelector('.tap__audio');
+    tapSound.play();
+    
     const randomIndex = Math.floor(Math.random() * pics.length);
     const randomGameFill = pics[randomIndex];
     renderField(randomGameFill.pic, randomGameFill.size);

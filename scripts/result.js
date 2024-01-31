@@ -20,6 +20,9 @@ function showResult() {
   resultBtn.textContent = 'Show result';
 
   resultBtn.addEventListener('click', () => {
+    const tapSound = document.querySelector('.tap__audio');
+    tapSound.play();
+
     const name = document.querySelector('.label-pic');
     const selectPic = pics.find((pic) => pic.name == name.textContent);
     const gamebtn = document.querySelectorAll('.btn');
@@ -55,6 +58,9 @@ function refreshGameFill() {
   refreshBtn.textContent = 'Restart game';
 
   refreshBtn.addEventListener('click', () => {
+    const tapSound = document.querySelector('.tap__audio');
+    tapSound.play();
+    
     const gamebtn = document.querySelectorAll('.btn');
 
     gamebtn.forEach((btn) => {

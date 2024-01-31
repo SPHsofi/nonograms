@@ -21,6 +21,7 @@ export function showResult() {
 
       if (btn.textContent = 'X') {
         btn.textContent = '';
+        btn.classList.remove('btn__cross');
       }
     })
   

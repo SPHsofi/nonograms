@@ -1,5 +1,6 @@
 import { pics } from "./pics.js";
 import { renderField, renderInfoGame } from "./index.js";
+import { timer } from "./timer.js";
 
 export function createSelectUl(filtredPics) {
   const selectPic = document.createElement('div');
@@ -46,7 +47,7 @@ function renderList(filtredPics) {
   listUl.classList.add("select-list");
 
   if (filtredPics == undefined || filtredPics.length == 0) {
-    sortList(listUl,pics);
+    sortList(listUl, pics);
   }
   else {
     sortList(listUl, filtredPics);
@@ -95,7 +96,7 @@ function sortList(listUl, arr) {
     easyUl.addEventListener('click', handleImageClick);
     mediumUl.addEventListener('click', handleImageClick);
     hardUl.addEventListener('click', handleImageClick);
-  
+
   })
 }
 
@@ -106,6 +107,10 @@ function handleImageClick(event) {
     gameFieds = selectedImage.pic.map(item => {
       item.isSelected = false;
       item.isEmpty = false;
+      timer.stopTimer();
+      timer.seconds = 0;
+      timer.counter = 0;
+      timer.renderTimer(document.querySelector('.timer'));
       return item;
     });
     renderField(gameFieds, selectedImage.size);

@@ -1,14 +1,17 @@
 import { createModalWin } from "./modalWin.js";
 import { timer } from "./timer.js";
 import { timerTag } from "./index.js";
+import { refreshResultWrapper } from "./result.js";
 
 export function createGameSection(array, level) {
   const gameSection = document.createElement('section');
   gameSection.className = 'game__section section';
 
   const gameWrapper = createGameWraper(array, level);
+  const BtnWrapper = gameBtnWrapper();
 
   gameSection.appendChild(gameWrapper);
+  gameSection.appendChild(BtnWrapper);
 
   return gameSection;
 }
@@ -24,6 +27,17 @@ export function createInfoWrapper(name) {
   infoWrapper.appendChild(labelPic);
 
   return infoWrapper;
+}
+
+function gameBtnWrapper() {
+  const gameBtnWrapper = document.createElement('div');
+  gameBtnWrapper.className = 'game-wrapper__btn';
+
+  const refresh = refreshResultWrapper();
+
+  gameBtnWrapper.appendChild(refresh);
+
+  return gameBtnWrapper;
 }
 
 function createGameWraper(array, level) {

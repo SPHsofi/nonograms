@@ -49,7 +49,8 @@
 .pic__btn, 
 .result__btn,
 .select-level,
-.refresh__btn {
+.refresh__btn,
+.save__btn {
   padding: 10px 10px;
   font: 400 26px/125% 'san serif';
   cursor: pointer;
@@ -57,7 +58,8 @@
 
 .level__btn,
 .result__btn,
-.refresh__btn {
+.refresh__btn,
+.save__btn {
   border: none;
   background-color: var(--game-fill-color);
 }
@@ -98,11 +100,6 @@
   cursor: pointer;
 }
 
-.game__section {
-  flex-direction: column;
-  gap: 40px;
-}
-
 .pic__btn {
   order: 0;
   border: 2px solid var(--accent-color);
@@ -115,8 +112,17 @@
 }
 
 /* Game section */
+.game__section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'info gameBtn' 'info gameFill';
+  flex-direction: column;
+  gap: 40px;
+}
 
 .info-wrapper {
+  grid-area: info;
   order: 0;
   display: flex;
   flex-direction: row;
@@ -138,6 +144,7 @@
 }
 
 .game-wrapper {
+  grid-area: gameFill;
   grid-template-columns: max-content max-content;
   grid-template-rows: max-content max-content;
   grid-template-areas:

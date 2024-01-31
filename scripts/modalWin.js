@@ -1,5 +1,4 @@
 import { timer } from "./timer.js";
-import { createTimer } from "./timer.js";
 
 export function createModalWin() {
   const modalSection = document.createElement('dialog');

@@ -37,7 +37,8 @@
   background-color: var(--accent-color);
 }
 
-.level-wrapper__btn {
+.level-wrapper__btn,
+.refresh-result-wrapper__btn {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -47,14 +48,16 @@
 .random__btn,
 .pic__btn, 
 .result__btn,
-.select-level {
+.select-level,
+.refresh__btn {
   padding: 10px 10px;
   font: 400 26px/125% 'san serif';
   cursor: pointer;
 }
 
 .level__btn,
-.result__btn {
+.result__btn,
+.refresh__btn {
   border: none;
   background-color: var(--game-fill-color);
 }

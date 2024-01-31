@@ -7,9 +7,11 @@ export function refreshResultWrapper() {
 
   const resultBtn = showResult();
   const refreshBtn = refreshGameFill();
+  const saveBtn = saveResult();
 
   refreshResultWrapper.appendChild(resultBtn);
   refreshResultWrapper.appendChild(refreshBtn);
+  refreshResultWrapper.appendChild(saveBtn);
 
   return refreshResultWrapper;
 }
@@ -80,4 +82,12 @@ function refreshGameFill() {
   });
 
   return refreshBtn;
+}
+
+function saveResult() {
+  const saveBtn = document.createElement('button');
+  saveBtn.className = 'save__btn';
+  saveBtn.textContent = 'Save game';
+
+  return saveBtn;
 }

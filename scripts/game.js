@@ -180,6 +180,9 @@ function game(gameFill, array) {
       console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`)
       if (winIndex === trueClick) {
         setTimeout(() => {
+          timer.stopTimer();
+          timer.isStart = false;
+          
           const modalSection = createModalWin();
           document.body.appendChild(modalSection);
 

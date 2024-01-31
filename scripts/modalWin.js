@@ -1,3 +1,6 @@
+import { timer } from "./timer.js";
+import { createTimer } from "./timer.js";
+
 export function createModalWin() {
   const modalSection = document.createElement('dialog');
   modalSection.classList.add('modal-win__section');
@@ -22,6 +25,9 @@ export function createModalWin() {
 
   buttonExit.addEventListener('click', () =>{
     modalSection.classList.replace('modal-visible__section', 'modal-win__section');
+    timer.seconds = 0;
+    timer.counter = 0;
+    timer.renderTimer(document.querySelector('.timer'));
   })
 
   btnContainer.appendChild(buttonExit);

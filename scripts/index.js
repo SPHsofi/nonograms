@@ -4,6 +4,7 @@ import { createCheckbox, toggleSortArray } from "./level.js";
 import { pics } from "./pics.js";
 import { createTimer } from "./timer.js";
 import { renderRandomBtn } from "./randomPic.js";
+import { showResult } from "./result.js";
 
 const main = document.createElement('main');
 main.className = 'main';
@@ -11,29 +12,31 @@ main.className = 'main';
 const headSection = document.createElement('section');
 headSection.className = 'head__section section';
 
-function renderFirstPic() {
-  const filterPics = pics.filter((pic) => pic.size == 5)
-  const randomIndex = Math.floor(Math.random() * filterPics.length);
-  const randomGameFill = pics[randomIndex];
+// function renderFirstPic() {
+//   const filterPics = pics.filter((pic) => pic.size == 5)
+//   const randomIndex = Math.floor(Math.random() * filterPics.length);
+//   const randomGameFill = pics[randomIndex];
 
-  return randomGameFill;
-}
+//   return randomGameFill;
+// }
 
-const randomGameFill = renderFirstPic();
+// const randomGameFill = renderFirstPic();
 
 const timerSection = createTimer();
 export const timerTag = timerSection.querySelector('.timer');
 
 const levelDiv = createCheckbox();
-let gameSection = createGameSection(randomGameFill.pic, "repeat(5, 3vw)");
+let gameSection = createGameSection(pics[0].pic, "repeat(5, 3vw)");
 let optionSection = createSelectUl();
-let infoWrapper = createInfoWrapper(randomGameFill.name);
+let infoWrapper = createInfoWrapper(pics[0].name);
 const randomBtn = renderRandomBtn();
+const resultBtn = showResult();
 
 gameSection.appendChild(infoWrapper);
 
 
 headSection.appendChild(randomBtn);
+headSection.appendChild(resultBtn);
 headSection.appendChild(timerSection);
 headSection.appendChild(levelDiv);
 headSection.appendChild(optionSection);

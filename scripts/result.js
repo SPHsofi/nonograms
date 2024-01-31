@@ -1,10 +1,20 @@
 import { pics } from "./pics.js";
 import { timer } from "./timer.js";
 
-export function showResult() {
-  const resultWrapper = document.createElement('div');
-  resultWrapper.className = 'result-wrapper';
+export function refreshResultWrapper() {
+  const refreshResultWrapper = document.createElement('div');
+  refreshResultWrapper.className = 'refresh-result-wrapper__btn';
 
+  const resultBtn = showResult();
+  const refreshBtn = refreshGameFill();
+
+  refreshResultWrapper.appendChild(resultBtn);
+  refreshResultWrapper.appendChild(refreshBtn);
+
+  return refreshResultWrapper;
+}
+
+function showResult() {
   const resultBtn = document.createElement('button');
   resultBtn.className = 'result__btn';
   resultBtn.textContent = 'Show result';
@@ -24,7 +34,7 @@ export function showResult() {
         btn.classList.remove('btn__cross');
       }
     })
-  
+
     selectPic.pic.forEach((row, rowIndex) => {
       row.forEach((item, colIndex) => {
         if (item.isShouldClick) {
@@ -33,11 +43,35 @@ export function showResult() {
         }
       });
     });
-timer.stopTimer();
+    timer.stopTimer();
   });
-  
 
-  resultWrapper.appendChild(resultBtn);
+  return resultBtn;
+}
 
-  return resultWrapper;
+function refreshGameFill() {
+  const refreshBtn = document.createElement('button');
+  refreshBtn.className = 'refresh__btn';
+  refreshBtn.textContent = 'Restart game';
+
+  refreshBtn.addEventListener('click', () => {
+    const gamebtn = document.querySelectorAll('.btn');
+
+    gamebtn.forEach((btn) => {
+      if (btn.classList.contains('btn__active')) {
+        btn.classList.remove('btn__active');
+      }
+
+      if (btn.textContent = 'X') {
+        btn.textContent = '';
+        btn.classList.remove('btn__cross');
+      }
+    })
+    timer.stopTimer();
+    timer.seconds = 0;
+    timer.counter = 0;
+    timer.renderTimer(document.querySelector('.timer'));
+  });
+
+  return refreshBtn;
 }

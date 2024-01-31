@@ -157,32 +157,35 @@ function game(gameFill, array) {
     btn.addEventListener('click', () => {
       // true
       if (array.flat()[index].isShouldClick) {
-        if (btn.classList.contains('btn__active')) {
-          btn.classList.remove('btn__active')
-          --winIndex
+        if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
+          btn.classList.add('btn__active');
+          ++winIndex;
         }
-        else {
-          btn.classList.add('btn__active')
-          ++winIndex
+        else if (btn.classList.contains('btn__active')){
+          btn.classList.remove('btn__active');
+          --winIndex;
         }
-        // false
       } else {
-        if (btn.classList.contains('btn__active')) {
-          btn.classList.remove('btn__active')
-          ++winIndex
+        if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
+          btn.classList.add('btn__active');
+          --winIndex;
+        }
+        else if (btn.classList.contains('btn__cross')) {
+          return;
         }
         else {
-          btn.classList.add('btn__active')
-          --winIndex
+          btn.classList.remove('btn__active');
+          ++winIndex;
         }
       }
+      
       const trueClick = countTrueClicks(array);
       console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`)
       if (winIndex === trueClick) {
         setTimeout(() => {
           timer.stopTimer();
           timer.isStart = false;
-          
+
           const modalSection = createModalWin();
           document.body.appendChild(modalSection);
 
@@ -192,6 +195,21 @@ function game(gameFill, array) {
       }
       timer.startTimer(timerTag);
       timer.isStart = true;
+    })
+  })
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      console.log(array.flat()[index]);
+      if (!btn.classList.contains('btn__cross') && !btn.classList.contains('btn__active')) {
+        btn.classList.add('btn__cross');
+        btn.textContent = 'X';
+      }
+      else {
+        btn.classList.remove('btn__cross');
+        btn.textContent = '';
+      }
     })
   })
 }

@@ -5,6 +5,7 @@ import { pics } from "./pics.js";
 import { createTimer } from "./timer.js";
 import { renderRandomBtn } from "./randomPic.js";
 import { refreshResultWrapper } from "./result.js";
+import { createAudioSection } from "./audio.js";
 
 const main = document.createElement('main');
 main.className = 'main';
@@ -31,6 +32,7 @@ let optionSection = createSelectUl();
 let infoWrapper = createInfoWrapper(pics[0].name);
 const randomBtn = renderRandomBtn();
 const resultRefreshBtn = refreshResultWrapper();
+const audioSection = createAudioSection();
 
 gameSection.appendChild(infoWrapper);
 
@@ -43,6 +45,7 @@ headSection.appendChild(optionSection);
 
 main.appendChild(headSection);
 main.appendChild(gameSection);
+main.appendChild(audioSection);
 
 export function renderInfoGame(name) {
   infoWrapper = createInfoWrapper(name);

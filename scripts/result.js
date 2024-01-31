@@ -1,20 +1,44 @@
 import { pics } from "./pics.js";
 import { timer } from "./timer.js";
+import { renderField, renderInfoGame } from "./index.js";
 
 export function refreshResultWrapper() {
   const refreshResultWrapper = document.createElement('div');
   refreshResultWrapper.className = 'refresh-result-wrapper__btn';
 
+
+  const randomBtn = renderRandomBtn();
   const resultBtn = showResult();
   const refreshBtn = refreshGameFill();
   const saveBtn = saveResult();
 
+  refreshResultWrapper.appendChild(randomBtn);
   refreshResultWrapper.appendChild(resultBtn);
   refreshResultWrapper.appendChild(refreshBtn);
   refreshResultWrapper.appendChild(saveBtn);
 
   return refreshResultWrapper;
 }
+
+function renderRandomBtn() {
+
+  const randomBtn = document.createElement('button');
+  randomBtn.className = 'random__btn';
+  randomBtn.textContent = 'Random picture';
+
+  randomBtn.onclick = function () {
+    const tapSound = document.querySelector('.tap__audio');
+    tapSound.play();
+
+    const randomIndex = Math.floor(Math.random() * pics.length);
+    const randomGameFill = pics[randomIndex];
+    renderField(randomGameFill.pic, randomGameFill.size);
+    renderInfoGame(randomGameFill.name);
+  }
+
+  return randomBtn;
+}
+
 
 function showResult() {
   const resultBtn = document.createElement('button');
@@ -62,7 +86,7 @@ function refreshGameFill() {
   refreshBtn.addEventListener('click', () => {
     const tapSound = document.querySelector('.tap__audio');
     tapSound.play();
-    
+
     const gamebtn = document.querySelectorAll('.btn');
 
     gamebtn.forEach((btn) => {

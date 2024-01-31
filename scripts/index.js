@@ -4,7 +4,7 @@ import { createCheckbox, toggleSortArray } from "./level.js";
 import { pics } from "./pics.js";
 import { createTimer } from "./timer.js";
 import { renderRandomBtn } from "./randomPic.js";
-import { showResult } from "./result.js";
+import { refreshResultWrapper } from "./result.js";
 
 const main = document.createElement('main');
 main.className = 'main';
@@ -30,13 +30,13 @@ let gameSection = createGameSection(pics[0].pic, "repeat(5, 3vw)");
 let optionSection = createSelectUl();
 let infoWrapper = createInfoWrapper(pics[0].name);
 const randomBtn = renderRandomBtn();
-const resultBtn = showResult();
+const resultRefreshBtn = refreshResultWrapper();
 
 gameSection.appendChild(infoWrapper);
 
 
 headSection.appendChild(randomBtn);
-headSection.appendChild(resultBtn);
+headSection.appendChild(resultRefreshBtn);
 headSection.appendChild(timerSection);
 headSection.appendChild(levelDiv);
 headSection.appendChild(optionSection);

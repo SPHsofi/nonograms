@@ -45,22 +45,23 @@
 
 .level__btn,
 .random__btn,
-.pic__btn {
+.pic__btn, 
+.result__btn,
+.select-level {
   padding: 10px 10px;
   font: 400 26px/125% 'san serif';
+  cursor: pointer;
 }
 
-.level__btn {
-  border: 1px solid var(--game-fill-color);
+.level__btn,
+.result__btn {
+  border: none;
   background-color: var(--game-fill-color);
 }
 
 .select-level {
   background-color: rgba(235, 150, 121, 0.5);
-  border: 1px solid rgba(235, 150, 121, 0.5);
-  padding: 5px;
-  padding: 5px 10px;
-  font: 400 30px/125% 'san serif';
+  border: none;
 }
 
 .select-pic__wrapper {
@@ -107,6 +108,7 @@
 
 .timer {
   font: 600 30px/125% 'san serif';
+  cursor: default;
 }
 
 /* Game section */
@@ -185,6 +187,11 @@
 
 .btn__active {
   background-color: var(--text-color);
+}
+
+.btn__cross {
+  font-size: 25px;
+  padding: 0;
 }
 
 /* Modal section */

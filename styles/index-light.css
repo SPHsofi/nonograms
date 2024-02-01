@@ -130,7 +130,8 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr 4fr;
   grid-template-areas: '. info .' 'gameBtn gameFill .';
-  gap: 40px;
+  gap: 20px;
+  margin: 0 100px;
 }
 
 .info-wrapper {
@@ -268,7 +269,7 @@ grid-area: gameBtn;
   border: none;
   padding: 10px 15px;
   cursor: pointer;
-  font: 400 35px/125% 'san serif';
+  border-radius: 5px;
   background-color: var(--accent-color);
 }
 

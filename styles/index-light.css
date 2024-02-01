@@ -286,18 +286,18 @@ grid-area: gameBtn;
   flex-direction: column;
   border: 2px solid var(--text-color);
   background-color: var(--background-color);
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
   justify-content: space-evenly;
 }
 
 .modal-title {
-  font: 600 50px/125% 'san serif';
+  font: 600 36px/125% 'san serif';
   margin: 0;
 }
 
 .modal-text {
-  font: 400 40px/125% 'san serif';
+  font: 400 30px/125% 'san serif';
   margin: 0;
 }
 
@@ -307,7 +307,7 @@ grid-area: gameBtn;
   cursor: pointer;
   border-radius: 5px;
   background-color: var(--accent-color);
-  font: 400 34px/125% 'san serif';
+  font: 400 30px/125% 'san serif';
 }
 
 .modal-pics__btn {

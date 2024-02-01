@@ -7,8 +7,6 @@ import { refreshResultWrapper } from "./result.js";
 const timerSection = createTimer();
 const timerTag = timerSection.querySelector('.timer');
 
-console.log(timerTag)
-
 export function createGameSection(array, level) {
   const gameSection = document.createElement('section');
   gameSection.className = 'game__section section';
@@ -40,7 +38,7 @@ function gameBtnWrapper() {
   gameBtnWrapper.className = 'game-wrapper__btn';
 
   const refresh = refreshResultWrapper();
-  
+
   gameBtnWrapper.appendChild(timerSection);
   gameBtnWrapper.appendChild(refresh);
 
@@ -68,11 +66,23 @@ function renderGameField(array, level) {
   gameFill.style.gridTemplateRows = level;
   gameFill.className = 'game';
 
-  array.flat().forEach(() => {
+
+  const totalCells = array.length * array[0].length; 
+
+  if (totalCells === 100) {
+    gameFill.classList.add('grid-10-10');
+    } else if (totalCells === 225) {
+    gameFill.classList.add('grid-15-15');
+  }
+
+  array.flat().forEach((_, index) => {
     const button = document.createElement('button');
     button.classList.add('btn');
     gameFill.appendChild(button);
 
+    if ((index + 1) % 5 === 0) {
+      button.style.borderRight = '2px solid var(--text-color)';
+    }
   })
 
   game(gameFill, array);

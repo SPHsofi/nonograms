@@ -2,7 +2,7 @@ import { createGameSection, createInfoWrapper } from "./game.js";
 import { createSelectUl } from "./list.js";
 import { createCheckbox, toggleSortArray } from "./level.js";
 import { pics } from "./pics.js";
-import { createTimer } from "./timer.js";
+// import { createTimer } from "./timer.js";
 import { createAudioSection } from "./audio.js";
 import { changeTheme } from "./theme.js";
 
@@ -22,8 +22,8 @@ headSection.className = 'head__section section';
 
 // const randomGameFill = renderFirstPic();
 
-const timerSection = createTimer();
-export const timerTag = timerSection.querySelector('.timer');
+// const timerSection = createTimer();
+// export const timerTag = timerSection.querySelector('.timer');
 
 const levelDiv = createCheckbox();
 let gameSection = createGameSection(pics[0].pic, "repeat(5, 3vw)");
@@ -36,7 +36,7 @@ gameSection.appendChild(infoWrapper);
 
 
 headSection.appendChild(themeWrapper);
-headSection.appendChild(timerSection);
+// headSection.appendChild(timerSection);
 headSection.appendChild(levelDiv);
 headSection.appendChild(optionSection);
 

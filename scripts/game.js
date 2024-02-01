@@ -1,7 +1,13 @@
 import { createModalWin } from "./modalWin.js";
 import { timer } from "./timer.js";
-import { timerTag } from "./index.js";
+// import { timerTag } from "./index.js";
+import { createTimer } from "./timer.js";
 import { refreshResultWrapper } from "./result.js";
+
+const timerSection = createTimer();
+const timerTag = timerSection.querySelector('.timer');
+
+console.log(timerTag)
 
 export function createGameSection(array, level) {
   const gameSection = document.createElement('section');
@@ -34,7 +40,8 @@ function gameBtnWrapper() {
   gameBtnWrapper.className = 'game-wrapper__btn';
 
   const refresh = refreshResultWrapper();
-
+  
+  gameBtnWrapper.appendChild(timerSection);
   gameBtnWrapper.appendChild(refresh);
 
   return gameBtnWrapper;

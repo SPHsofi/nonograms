@@ -3,9 +3,8 @@ import { createSelectUl } from "./list.js";
 import { createCheckbox, toggleSortArray } from "./level.js";
 import { pics } from "./pics.js";
 import { createTimer } from "./timer.js";
-// import { renderRandomBtn } from "./randomPic.js";
-// import { refreshResultWrapper } from "./result.js";
 import { createAudioSection } from "./audio.js";
+import { changeTheme } from "./theme.js";
 
 const main = document.createElement('main');
 main.className = 'main';
@@ -30,15 +29,13 @@ const levelDiv = createCheckbox();
 let gameSection = createGameSection(pics[0].pic, "repeat(5, 3vw)");
 let optionSection = createSelectUl();
 let infoWrapper = createInfoWrapper(pics[0].name);
-// const randomBtn = renderRandomBtn();
-// const resultRefreshBtn = refreshResultWrapper();
 const audioSection = createAudioSection();
+const themeWrapper = changeTheme();
 
 gameSection.appendChild(infoWrapper);
 
 
-// headSection.appendChild(randomBtn);
-// headSection.appendChild(resultRefreshBtn);
+headSection.appendChild(themeWrapper);
 headSection.appendChild(timerSection);
 headSection.appendChild(levelDiv);
 headSection.appendChild(optionSection);

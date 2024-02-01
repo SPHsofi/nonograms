@@ -76,6 +76,7 @@
   font: 400 26px/125% 'san serif';
   cursor: pointer;
   border-radius: 5px;
+  color: var(--text-color);
 }
 
 .level__btn,

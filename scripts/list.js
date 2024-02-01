@@ -62,22 +62,20 @@ function renderTitleList(className, size) {
   const levelUl = document.createElement('ul');
   levelUl.className = className;
   levelUl.textContent = size;
-
   return levelUl
 }
 
 let gameFieds = []
 function sortList(listUl, arr) {
 
-  const easyUl = renderTitleList('easy-title title', '5x5')
-  const mediumUl = renderTitleList('medium-title title', '10x10')
-  const hardUl = renderTitleList('hard-title title', '15x15')
+  const easyUl = renderTitleList('easy-title title', '5x5');
+  const mediumUl = renderTitleList('medium-title title', '10x10');
+  const hardUl = renderTitleList('hard-title title', '15x15');
 
   arr.forEach((pic) => {
     const listLi = document.createElement('li');
     listLi.textContent = pic.name;
     listLi.className = 'name-game';
-    // listUl.appendChild(listLi);
 
     if (pic.size === 5) {
       easyUl.appendChild(listLi);

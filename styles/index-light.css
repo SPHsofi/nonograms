@@ -27,9 +27,16 @@
 
 /* header section */
 .head__section {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'theme level select';
   margin-bottom: 80px;
+}
+
+.theme-wrapper {
+  grid-area: theme;
+  text-align: center;
 }
 
 .theme__btn {
@@ -51,8 +58,10 @@
 }
 
 .level-wrapper__btn {
+  grid-area: level;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -84,6 +93,8 @@
 
 .select-pic__wrapper {
   display: flex;
+  justify-content: center;
+  grid-area: select;
 }
 
 .select-list {
@@ -119,6 +130,10 @@
   background: none;
 }
 
+.timer-wrapper {
+  text-align: center;
+}
+
 .timer {
   font: 600 30px/125% 'san serif';
   cursor: default;
@@ -131,7 +146,6 @@
   grid-template-rows: 1fr 4fr;
   grid-template-areas: '. info .' 'gameBtn gameFill .';
   gap: 20px;
-  margin: 0 100px;
 }
 
 .info-wrapper {
@@ -148,6 +162,7 @@ grid-area: gameBtn;
   flex-direction: column;
   gap: 20px;
   justify-content: space-between;
+  padding: 0 40px;
 }
 
 .label-pic {
@@ -260,17 +275,13 @@ grid-area: gameBtn;
   margin: 0;
 }
 
-.btn-container {
-  display: flex;
-  gap: 10px;
-}
-
 .modal-exit__btn {
   border: none;
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
   background-color: var(--accent-color);
+  font: 400 34px/125% 'san serif';
 }
 
 .modal-pics__btn {

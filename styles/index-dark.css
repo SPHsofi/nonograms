@@ -1,6 +1,6 @@
 :root {
   --background-color: #020202;
-  --text-color: #E6E2DD;
+  --text-color: #ffffff;
   --accent-color: #BCFD4C;
   --game-fill-color: #868686;
 }
@@ -72,8 +72,8 @@
 .select-level,
 .refresh__btn,
 .save__btn {
-  padding: 10px 10px;
-  font: 400 26px/125% 'san serif';
+  padding: 8px 8px;
+  font: 400 24px/125% 'san serif';
   cursor: pointer;
   border-radius: 5px;
   color: var(--background-color);
@@ -87,9 +87,22 @@
   background-color: var(--game-fill-color);
 }
 
+.star__btn {
+  width: 20px;
+  height: 20px;
+}
+
+.level__btn .star__btn:first-child {
+  padding-left: 5px;
+}
+
 .select-level {
   background-color: rgba(188, 253, 76, 0.5);
   border: none;
+}
+
+.select-level .star__btn:first-child {
+  padding-left: 5px;
 }
 
 .select-pic__wrapper {
@@ -146,7 +159,7 @@
 .game__section {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 50px max-content;
   grid-template-areas: '. info .' 'gameBtn gameFill .';
   gap: 20px;
 }
@@ -205,7 +218,19 @@ grid-area: gameBtn;
 
 .game {
   grid-area: game;
-  border: 2px solid;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-right: 1px solid;
+}
+
+.grid-10-10 .btn:nth-child(n+41):nth-child(-n+50)  {
+  border-bottom: 2px solid var(--text-color);
+}
+
+.grid-15-15 .btn:nth-child(n+61):nth-child(-n+75),
+.grid-15-15 .btn:nth-child(n+136):nth-child(-n+150) {
+    border-bottom: 2px solid var(--text-color);
 }
 
 .column-hints,

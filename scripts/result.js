@@ -62,6 +62,8 @@ function showResult() {
         btn.textContent = '';
         btn.classList.remove('btn__cross');
       }
+
+      btn.disabled = true;
     })
 
     selectPic.pic.forEach((row, rowIndex) => {
@@ -98,6 +100,8 @@ function refreshGameFill() {
         btn.textContent = '';
         btn.classList.remove('btn__cross');
       }
+
+      btn.disabled = false;
     })
     timer.stopTimer();
     timer.seconds = 0;

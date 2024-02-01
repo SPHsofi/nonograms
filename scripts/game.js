@@ -241,11 +241,9 @@ function game(gameFill, array) {
       e.preventDefault();
       if (!btn.classList.contains('btn__cross') && !btn.classList.contains('btn__active')) {
         btn.classList.add('btn__cross');
-        btn.textContent = 'X';
       }
       else {
         btn.classList.remove('btn__cross');
-        btn.textContent = '';
       }
     })
   })

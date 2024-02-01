@@ -264,6 +264,10 @@ grid-area: gameBtn;
   padding: 0;
 }
 
+.btn__cross::after {
+  content: 'X';
+}
+
 /* Modal section */
 .modal-visible__section,
 .modal-win__wrapper {

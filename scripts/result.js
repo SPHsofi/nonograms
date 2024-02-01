@@ -1,6 +1,7 @@
 import { pics } from "./pics.js";
 import { timer } from "./timer.js";
 import { renderField, renderInfoGame } from "./index.js";
+// import { winIndex } from "./game.js";
 
 export function refreshResultWrapper() {
   const refreshResultWrapper = document.createElement('div');
@@ -58,7 +59,7 @@ function showResult() {
         btn.classList.remove('btn__active');
       }
 
-      if (btn.textContent = 'X') {
+      if (btn.textContent == 'X') {
         btn.textContent = '';
         btn.classList.remove('btn__cross');
       }
@@ -96,13 +97,14 @@ function refreshGameFill() {
         btn.classList.remove('btn__active');
       }
 
-      if (btn.textContent = 'X') {
+      if (btn.textContent == 'X') {
         btn.textContent = '';
         btn.classList.remove('btn__cross');
       }
 
       btn.disabled = false;
     })
+    window.winIndex = 0;
     timer.stopTimer();
     timer.seconds = 0;
     timer.counter = 0;

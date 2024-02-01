@@ -181,7 +181,7 @@ function countTrueClicks(array) {
 }
 
 function game(gameFill, array) {
-  let winIndex = 0
+  window.winIndex = 0;
   const buttons = gameFill.querySelectorAll('.btn');
 
   buttons.forEach((btn, index) => {

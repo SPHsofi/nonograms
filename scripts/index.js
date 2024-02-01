@@ -52,11 +52,11 @@ export function renderInfoGame(name) {
 export function renderField(array, number) {
   main.removeChild(gameSection)
   if (number == 5) {
-    gameSection = createGameSection(array, "repeat(5, 2.5vw)");
+    gameSection = createGameSection(array, "repeat(5, 3vw)");
   } else if (number == 10) {
-    gameSection = createGameSection(array, "repeat(10, 2.5vw)");
+    gameSection = createGameSection(array, "repeat(10, 3vw)");
   } else {
-    gameSection = createGameSection(array, "repeat(15, 2.5vw)");
+    gameSection = createGameSection(array, "repeat(15, 3vw)");
   }
   main.appendChild(gameSection)
 }

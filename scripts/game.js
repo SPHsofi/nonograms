@@ -67,11 +67,11 @@ function renderGameField(array, level) {
   gameFill.className = 'game';
 
 
-  const totalCells = array.length * array[0].length; 
+  const totalCells = array.length * array[0].length;
 
   if (totalCells === 100) {
     gameFill.classList.add('grid-10-10');
-    } else if (totalCells === 225) {
+  } else if (totalCells === 225) {
     gameFill.classList.add('grid-15-15');
   }
 
@@ -221,6 +221,8 @@ function game(gameFill, array) {
 
           timer.stopTimer();
           timer.isStart = false;
+          
+          saveWinGame();
 
           const modalSection = createModalWin();
           document.body.appendChild(modalSection);
@@ -247,4 +249,17 @@ function game(gameFill, array) {
       }
     })
   })
+}
+
+function saveWinGame() {
+  const winGame = {
+    time: timer.counter,
+    name: document.querySelector('.label-pic').textContent
+  }
+
+  const picLs = JSON.parse(localStorage.getItem('results')) || [];
+
+  picLs.push(winGame);
+  picLs.sort((a,b) => +a.time - +b.time);
+  localStorage.setItem('winGame', JSON.stringify(picLs));
 }

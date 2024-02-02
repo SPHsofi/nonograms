@@ -123,8 +123,8 @@
   margin-top: 60px;
   list-style: none;
   background-color: var(--accent-color);
-  font-size: 30px;
-  padding: 20px;
+  font-size: 24px;
+  padding: 21px;
   max-height: 300px;
   overflow: auto;
 }
@@ -233,7 +233,11 @@
   border-bottom: 2px solid var(--text-color);
 }
 
-.column-hints,
+.column-hints {
+  display: flex;
+  gap: 10px;
+}
+
 .row-hints {
   display: flex;
   gap: 10px;
@@ -302,10 +306,10 @@
   flex-direction: column;
   background-color: var(--background-color);
   width: 400px;
-  gap: 15px;
+  gap: 20px;
   padding: 15px;
-  /* justify-content: space-evenly; */
   border-radius: 5px;
+  color: var(--text-color);
 }
 
 .modal-title {
@@ -320,7 +324,7 @@
 
 .modal-exit__btn {
   border: none;
-  padding: 10px 15px;
+  padding: 5px 15px;
   cursor: pointer;
   border-radius: 5px;
   background-color: var(--accent-color);
@@ -359,36 +363,106 @@
   margin: 10px;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1200px) {
   .head__section {
     margin-bottom: 60px;
   }
-}
 
-@media screen and (max-width: 900px) {
+  .timer {
+    font-size: 25px;
+  }
 
   .level__btn,
   .random__btn,
-  .pic__btn {
-    padding: 8px 8px;
-    font: 400 20px/125% 'san serif';
+  .pic__btn,
+  .result__btn,
+  .select-level,
+  .refresh__btn,
+  .save__btn,
+  .continue__btn {
+    font-size: 22px;
+  }
+
+  .moon__svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .theme__btn {
+    padding: 5px 35px;
+  }
+
+  .visible {
+    font-size: 22px;
+    margin-top: 55px;
+    padding: 18px;
+  }
+
+  .label-pic {
+    font-size: 35px;
+  }
+
+  .hints__span {
+    font-size: 22px;
+  }
+
+  .column-hints {
+    gap: 5px;
+  }
+  
+  .row-hints {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .head__section {
+    margin-bottom: 40px;
   }
 
   .timer {
-    font: 600 26px/125% 'san serif';
-    ;
-  }
-
-  .head__section {
-    margin-bottom: 40px;
+    font-size: 22px;
   }
 
   .label-pic {
     font-size: 32px;
   }
 
-  .hints__span {
+  .level__btn,
+  .random__btn,
+  .pic__btn,
+  .result__btn,
+  .select-level,
+  .refresh__btn,
+  .save__btn,
+  .continue__btn {
+    padding: 6px 6px;
     font-size: 20px;
+  }
+
+  .moon__svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .visible {
+    font-size: 20px;
+    margin-top: 50px;
+    padding: 14px;
+  }
+
+  .hints__span {
+    font-size: 18px;
+  }
+
+  .column-hints {
+    display: flex;
+    gap: 3px;
+  }
+  
+  .row-hints {
+    display: flex;
+    gap: 12px;
   }
 }
 
@@ -398,7 +472,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 600px) {
   .hints__span {
     font-size: 12px;
   }

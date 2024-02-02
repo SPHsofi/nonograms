@@ -473,6 +473,7 @@
   .rating-time,
   .modal-rating {
     font-size: 20px;
+    margin: 10px;
   }
 
   .modal-exit__btn {
@@ -556,6 +557,7 @@
   .rating-time,
   .modal-rating {
     font-size: 14px;
+    margin: 7px;
   }
 
   .modal-exit__btn {
@@ -644,6 +646,33 @@
 }
 
 @media screen and (max-width: 700px) {
+
+  .modal-win__wrapper {
+    width: 215px;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+
+  .modal-text {
+    font-size: 14px;
+  }
+
+  .rating-index,
+  .rating-name,
+  .rating-time,
+  .modal-rating {
+    font-size: 12px;
+    margin: 5px;
+  }
+
+  .modal-exit__btn {
+    font-size: 14px;
+  }
+
   .theme__btn {
     padding: 5px 20px;
   }

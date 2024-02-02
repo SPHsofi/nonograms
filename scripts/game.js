@@ -257,7 +257,7 @@ function saveWinGame() {
     name: document.querySelector('.label-pic').textContent
   }
 
-  const picLs = JSON.parse(localStorage.getItem('results')) || [];
+  const picLs = JSON.parse(localStorage.getItem('winGame')) || [];
 
   picLs.push(winGame);
   picLs.sort((a,b) => +a.time - +b.time);

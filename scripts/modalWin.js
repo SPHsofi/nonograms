@@ -27,6 +27,7 @@ export function createModalWin() {
     exitSound.play();
 
     modalSection.classList.replace('modal-visible__section', 'modal-win__section');
+    timer.startTimer = false;
     timer.seconds = 0;
     timer.counter = 0;
     timer.renderTimer(document.querySelector('.timer'));

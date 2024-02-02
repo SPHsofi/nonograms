@@ -61,9 +61,7 @@ function showResult() {
       if (btn.classList.contains('btn__active')) {
         btn.classList.remove('btn__active');
       }
-
-      if (btn.textContent == 'X') {
-        btn.textContent = '';
+      if (btn.classList.contains('btn__cross')) {
         btn.classList.remove('btn__cross');
       }
 
@@ -103,8 +101,7 @@ function refreshGameFill() {
         btn.classList.remove('btn__active');
       }
 
-      if (btn.textContent == 'X') {
-        btn.textContent = '';
+      if (btn.classList.contains('btn__cross')) {
         btn.classList.remove('btn__cross');
       }
 

@@ -215,14 +215,13 @@ function game(gameFill, array) {
       const trueClick = countTrueClicks(array);
       console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`)
       if (winIndex === trueClick) {
+        saveWinGame();
         setTimeout(() => {
           const winSound = document.querySelector('.win__audio');
           winSound.play();
 
           timer.stopTimer();
           timer.isStart = false;
-          
-          saveWinGame();
 
           const modalSection = createModalWin();
           document.body.appendChild(modalSection);

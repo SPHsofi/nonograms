@@ -71,7 +71,8 @@
 .result__btn,
 .select-level,
 .refresh__btn,
-.save__btn {
+.save__btn,
+.continue__btn {
   padding: 8px 8px;
   font: 400 24px/125% 'san serif';
   cursor: pointer;
@@ -139,7 +140,8 @@
   cursor: pointer;
 }
 
-.pic__btn {
+.pic__btn,
+.continue__btn {
   order: 0;
   border: 2px solid var(--accent-color);
   background: none;

@@ -564,7 +564,55 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
+  .head__section {
+    margin-bottom: 25px;
+  }
+
+  .moon__svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .star__btn {
+    width: 15px;
+    height: 15px;
+  }
+
+  .label-pic {
+    font-size: 24px;
+  }
+
+  .timer {
+    font-size: 18px;
+  }
+
+  .level__btn,
+  .random__btn,
+  .pic__btn,
+  .result__btn,
+  .select-level,
+  .refresh__btn,
+  .save__btn,
+  .continue__btn {
+    padding: 6px 6px;
+    font-size: 14px;
+  }
+
+  .visible {
+    font-size: 14px;
+    margin-top: 40px;
+    padding: 19px;
+    max-height: 180px;
+  }
+
+  .title {
+    padding: 7px;
+  }
+
+}
+
+@media screen and (max-width: 605px) {
   .hints__span {
     font-size: 12px;
   }

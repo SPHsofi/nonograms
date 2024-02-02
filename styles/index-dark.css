@@ -89,6 +89,11 @@
   background-color: var(--game-fill-color);
 }
 
+.save__btn-disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .level__btn {
   display: flex;
   flex-direction: row;

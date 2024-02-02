@@ -29,6 +29,11 @@ function randomGameBtn() {
   randomBtn.onclick = function () {
     soundPlay();
 
+    window.winIndex = 0;
+    timer.seconds = 0;
+    timer.counter = 0;
+    timer.renderTimer(document.querySelector('.timer'));
+
     const randomIndex = Math.floor(Math.random() * pics.length);
     const randomGameFill = pics[randomIndex];
     renderField(randomGameFill.pic, randomGameFill.size);

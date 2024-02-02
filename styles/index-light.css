@@ -335,6 +335,7 @@
   border-radius: 5px;
   background-color: var(--accent-color);
   font: 400 28px/125% 'san serif';
+  color: var(--text-color);
 }
 
 .rating-wrapper {

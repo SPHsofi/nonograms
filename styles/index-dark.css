@@ -333,6 +333,7 @@
   font: 400 28px/125% 'san serif';
   border-radius: 5px;
   background-color: var(--accent-color);
+  color: var(--background-color);
 }
 
 

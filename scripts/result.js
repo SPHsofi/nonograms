@@ -7,11 +7,11 @@ export function refreshResultWrapper() {
   refreshResultWrapper.className = 'refresh-result-wrapper__btn';
 
 
-  const randomBtn = renderRandomBtn();
-  const resultBtn = showResult();
-  const refreshBtn = refreshGameFill();
-  const saveBtn = saveResult();
-  const continueBtn = continueGame();
+  const randomBtn = randomGameBtn();
+  const resultBtn = showResultBtn();
+  const refreshBtn = restartGameFillBtn();
+  const saveBtn = saveResultBtn();
+  const continueBtn = continueGameBtn();
 
   refreshResultWrapper.appendChild(randomBtn);
   refreshResultWrapper.appendChild(resultBtn);
@@ -22,15 +22,12 @@ export function refreshResultWrapper() {
   return refreshResultWrapper;
 }
 
-function renderRandomBtn() {
-
-  const randomBtn = document.createElement('button');
-  randomBtn.className = 'random__btn';
-  randomBtn.textContent = 'Random picture';
+// Событие для кнопки рандомная игра
+function randomGameBtn() {
+  const randomBtn = renderBtn('random__btn', 'Random picture');
 
   randomBtn.onclick = function () {
-    const tapSound = document.querySelector('.tap__audio');
-    tapSound.play();
+    soundPlay();
 
     const randomIndex = Math.floor(Math.random() * pics.length);
     const randomGameFill = pics[randomIndex];
@@ -41,100 +38,105 @@ function renderRandomBtn() {
   return randomBtn;
 }
 
-
-function showResult() {
-  const resultBtn = document.createElement('button');
-  resultBtn.className = 'result__btn';
-  resultBtn.textContent = 'Show result';
+// Кнопка "Показать результат" 
+function showResultBtn() {
+  const resultBtn = renderBtn('result__btn', 'Show result');
 
   resultBtn.addEventListener('click', () => {
     soundPlay();
-
-    const save = document.querySelector('.save__btn');
-    console.log(save)
-    save.classList.add('save__btn-disabled');
-    save.disabled = true;
-
-    const name = document.querySelector('.label-pic');
-    const selectPic = pics.find((pic) => pic.name == name.textContent);
-    const gamebtn = document.querySelectorAll('.btn');
-
-    gamebtn.forEach((btn) => {
-      if (btn.classList.contains('btn__active')) {
-        btn.classList.remove('btn__active');
-      }
-      if (btn.classList.contains('btn__cross')) {
-        btn.classList.remove('btn__cross');
-      }
-
-      btn.disabled = true;
-    })
-
-    selectPic.pic.forEach((row, rowIndex) => {
-      row.forEach((item, colIndex) => {
-        if (item.isShouldClick) {
-          const index = rowIndex * selectPic.size + colIndex;
-          gamebtn[index].classList.add('btn__active');
-        }
-      });
-    });
-    timer.stopTimer();
+    showResult();
   });
 
   return resultBtn;
 }
 
-function refreshGameFill() {
-  const refreshBtn = document.createElement('button');
-  refreshBtn.className = 'refresh__btn';
-  refreshBtn.textContent = 'Restart game';
+// Функция для отображаения результата
+function showResult() {
+  const save = document.querySelector('.save__btn');
+  console.log(save)
+  save.classList.add('save__btn-disabled');
+  save.disabled = true;
+
+  const name = document.querySelector('.label-pic');
+  const selectPic = pics.find((pic) => pic.name == name.textContent);
+  const gamebtn = document.querySelectorAll('.btn');
+
+  gamebtn.forEach((btn) => {
+    if (btn.classList.contains('btn__active')) {
+      btn.classList.remove('btn__active');
+    }
+    if (btn.classList.contains('btn__cross')) {
+      btn.classList.remove('btn__cross');
+    }
+
+    btn.disabled = true;
+  })
+
+  selectPic.pic.forEach((row, rowIndex) => {
+    row.forEach((item, colIndex) => {
+      if (item.isShouldClick) {
+        const index = rowIndex * selectPic.size + colIndex;
+        gamebtn[index].classList.add('btn__active');
+      }
+    });
+  });
+  timer.stopTimer();
+}
+
+// Кнопка "Перезапустить игру"
+function restartGameFillBtn() {
+  const refreshBtn = renderBtn('refresh__btn', 'Restart game');
 
   refreshBtn.addEventListener('click', () => {
     soundPlay();
-
-    const save = document.querySelector('.save__btn');
-    save.classList.remove('save__btn-disabled');
-    save.disabled = false;
-
-    const gamebtn = document.querySelectorAll('.btn');
-
-    gamebtn.forEach((btn) => {
-      if (btn.classList.contains('btn__active')) {
-        btn.classList.remove('btn__active');
-      }
-
-      if (btn.classList.contains('btn__cross')) {
-        btn.classList.remove('btn__cross');
-      }
-
-      btn.disabled = false;
-    })
-    window.winIndex = 0;
-    timer.stopTimer();
-    timer.seconds = 0;
-    timer.counter = 0;
-    timer.renderTimer(document.querySelector('.timer'));
+    refreshGameFill();
   });
 
   return refreshBtn;
 }
 
-function saveResult() {
-  const saveBtn = document.createElement('button');
-  saveBtn.classList.add('save__btn');
-  saveBtn.textContent = 'Save game';
+// Функция для очищения игрового поля
+function refreshGameFill() {
+  const save = document.querySelector('.save__btn');
+  save.classList.remove('save__btn-disabled');
+  save.disabled = false;
 
-  saveBtn.addEventListener('click', ()=> {
+  const gamebtn = document.querySelectorAll('.btn');
+
+  gamebtn.forEach((btn) => {
+    if (btn.classList.contains('btn__active')) {
+      btn.classList.remove('btn__active');
+    }
+
+    if (btn.classList.contains('btn__cross')) {
+      btn.classList.remove('btn__cross');
+    }
+
+    btn.disabled = false;
+  })
+  window.winIndex = 0;
+  timer.stopTimer();
+  timer.seconds = 0;
+  timer.counter = 0;
+  timer.renderTimer(document.querySelector('.timer'));
+}
+
+// Кнопка "Сохранить результат"
+function saveResultBtn() {
+  const saveBtn = renderBtn('save__btn', 'Save game');
+
+  saveBtn.addEventListener('click', () => {
     soundPlay();
-    saveLs();
+    saveResult();
   })
 
   return saveBtn;
 }
 
-function saveLs() {
+// Функция для сохранения результата в localStorage
+function saveResult() {
   const gameName = document.querySelector('.label-pic').textContent;
-  const timerValue = timer.counter ;
+  const timerValue = timer.counter;
   const btns = document.querySelectorAll('.btn');
 
   const saveBtn = []
@@ -149,15 +151,66 @@ function saveLs() {
   localStorage.setItem('winIndex', winIndex);
 }
 
-function continueGame() {
-  const continueBtn = document.createElement('button');
-  continueBtn.className = 'continue__btn';
-  continueBtn.textContent = 'Continue last game';
+// Кнопка "Продолжить последнюю игру"
+function continueGameBtn() {
+  const continueBtn = renderBtn('continue__btn', 'Continue last game');
+
+  continueBtn.addEventListener('click', () => {
+    soundPlay();
+    continueGame();
+  })
 
   return continueBtn;
 }
 
+// Функция для отображения последней сохраненной игры
+function continueGame() {
+  const gameName = localStorage.getItem('gameName');
+  const picsLs = JSON.parse(localStorage.getItem('gameFields'));
+  const timerValue = localStorage.getItem('gameTimer');
+  const winIndexLs = localStorage.getItem('winIndex');
+  const timerTag = document.querySelector('.timer');
+  let foundGame = null;
+
+  if (gameName) {
+    foundGame = pics.find((pic) => pic.name == gameName);
+    renderField(foundGame.pic, foundGame.size);
+    renderInfoGame(gameName);
+  }
+
+  const btns = document.querySelectorAll('.btn');
+
+  btns.forEach((btn, index) => {
+    btn.className = picsLs[index];
+  })
+
+  window.winIndex = +winIndexLs;
+  timer.stopTimer();
+  timer.counter = +timerValue;
+  timer.seconds = calculateSeconds(+timerValue);
+  timer.renderTimer(timerTag);
+  timer.isStart = false;
+}
+
+// Функция для генерации кнопок
+function renderBtn(className, text) {
+  const btn = document.createElement('button');
+  btn.classList.add(className);
+  btn.textContent = text;
+
+  return btn;
+}
+
+// Функция для запуска звуковых эффектов
 function soundPlay() {
   const tapSound = document.querySelector('.tap__audio');
   tapSound.play();
+}
+
+// Функция для расчета секунд
+function calculateSeconds(counter) {
+  let totalMinutes = Math.floor(counter / 60)
+  let totalSeconds = counter - (totalMinutes * 60)
+
+  return totalSeconds
 }

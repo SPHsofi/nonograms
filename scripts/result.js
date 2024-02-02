@@ -32,6 +32,7 @@ function randomGameBtn() {
     window.winIndex = 0;
     timer.seconds = 0;
     timer.counter = 0;
+    console.log(timer.isStart)
     timer.renderTimer(document.querySelector('.timer'));
 
     const randomIndex = Math.floor(Math.random() * pics.length);
@@ -58,7 +59,6 @@ function showResultBtn() {
 // Функция для отображаения результата
 function showResult() {
   const save = document.querySelector('.save__btn');
-  console.log(save)
   save.classList.add('save__btn-disabled');
   save.disabled = true;
 
@@ -86,6 +86,7 @@ function showResult() {
     });
   });
   timer.stopTimer();
+  timer.isStart = false;
 }
 
 // Кнопка "Перезапустить игру"

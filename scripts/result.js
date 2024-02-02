@@ -119,5 +119,26 @@ function saveResult() {
   saveBtn.className = 'save__btn';
   saveBtn.textContent = 'Save game';
 
+  saveBtn.addEventListener('click', ()=> {
+    saveLs();
+  })
+
   return saveBtn;
+}
+
+function saveLs() {
+  const gameName = document.querySelector('.label-pic').textContent;
+  const timerValue = timer.counter ;
+  const btns = document.querySelectorAll('.btn');
+
+  const saveBtn = []
+
+  btns.forEach(btn => {
+    saveBtn.push(btn.className)
+  })
+
+  localStorage.setItem('gameFields', JSON.stringify(saveBtn));
+  localStorage.setItem('gameName', gameName);
+  localStorage.setItem('gameTimer', timerValue);
+  localStorage.setItem('winIndex', winIndex);
 }

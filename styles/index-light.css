@@ -368,6 +368,33 @@
 }
 
 @media screen and (max-width: 1200px) {
+
+  .modal-win__wrapper {
+    width: 400px;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .modal-title {
+    font-size: 30px;
+  }
+
+  .modal-text {
+    font-size: 24px;
+  }
+
+  .rating-index,
+  .rating-name,
+  .rating-time,
+  .modal-rating {
+    font-size: 22px;
+  }
+
+  .modal-exit__btn {
+    padding: 5px 15px;
+    font: 400 24px/125% 'san serif';
+  }
+
   .head__section {
     margin-bottom: 60px;
   }

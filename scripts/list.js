@@ -106,6 +106,7 @@ function handleImageClick(event) {
       item.isSelected = false;
       item.isEmpty = false;
       timer.stopTimer();
+      timer.isStart = false;
       timer.seconds = 0;
       timer.counter = 0;
       timer.renderTimer(document.querySelector('.timer'));

@@ -11,11 +11,13 @@ export function refreshResultWrapper() {
   const resultBtn = showResult();
   const refreshBtn = refreshGameFill();
   const saveBtn = saveResult();
+  const continueBtn = continueGame();
 
   refreshResultWrapper.appendChild(randomBtn);
   refreshResultWrapper.appendChild(resultBtn);
   refreshResultWrapper.appendChild(refreshBtn);
   refreshResultWrapper.appendChild(saveBtn);
+  refreshResultWrapper.appendChild(continueBtn);
 
   return refreshResultWrapper;
 }
@@ -145,6 +147,14 @@ function saveLs() {
   localStorage.setItem('gameName', gameName);
   localStorage.setItem('gameTimer', timerValue);
   localStorage.setItem('winIndex', winIndex);
+}
+
+function continueGame() {
+  const continueBtn = document.createElement('button');
+  continueBtn.className = 'continue__btn';
+  continueBtn.textContent = 'Continue last game';
+
+  return continueBtn;
 }
 
 function soundPlay() {

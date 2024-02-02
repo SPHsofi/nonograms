@@ -1,7 +1,6 @@
 import { pics } from "./pics.js";
 import { timer } from "./timer.js";
 import { renderField, renderInfoGame } from "./index.js";
-// import { winIndex } from "./game.js";
 
 export function refreshResultWrapper() {
   const refreshResultWrapper = document.createElement('div');
@@ -47,8 +46,12 @@ function showResult() {
   resultBtn.textContent = 'Show result';
 
   resultBtn.addEventListener('click', () => {
-    const tapSound = document.querySelector('.tap__audio');
-    tapSound.play();
+    soundPlay();
+
+    const save = document.querySelector('.save__btn');
+    console.log(save)
+    save.classList.add('save__btn-disabled');
+    save.disabled = true;
 
     const name = document.querySelector('.label-pic');
     const selectPic = pics.find((pic) => pic.name == name.textContent);
@@ -87,8 +90,11 @@ function refreshGameFill() {
   refreshBtn.textContent = 'Restart game';
 
   refreshBtn.addEventListener('click', () => {
-    const tapSound = document.querySelector('.tap__audio');
-    tapSound.play();
+    soundPlay();
+
+    const save = document.querySelector('.save__btn');
+    save.classList.remove('save__btn-disabled');
+    save.disabled = false;
 
     const gamebtn = document.querySelectorAll('.btn');
 
@@ -116,10 +122,11 @@ function refreshGameFill() {
 
 function saveResult() {
   const saveBtn = document.createElement('button');
-  saveBtn.className = 'save__btn';
+  saveBtn.classList.add('save__btn');
   saveBtn.textContent = 'Save game';
 
   saveBtn.addEventListener('click', ()=> {
+    soundPlay();
     saveLs();
   })
 
@@ -141,4 +148,9 @@ function saveLs() {
   localStorage.setItem('gameName', gameName);
   localStorage.setItem('gameTimer', timerValue);
   localStorage.setItem('winIndex', winIndex);
+}
+
+function soundPlay() {
+  const tapSound = document.querySelector('.tap__audio');
+  tapSound.play();
 }

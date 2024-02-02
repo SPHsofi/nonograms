@@ -536,6 +536,32 @@
 }
 
 @media screen and (max-width: 930px) {
+
+  .modal-win__wrapper {
+    width: 250px;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+
+  .modal-text {
+    font-size: 16px;
+  }
+
+  .rating-index,
+  .rating-name,
+  .rating-time,
+  .modal-rating {
+    font-size: 14px;
+  }
+
+  .modal-exit__btn {
+    font-size: 16px;
+  }
+
   .moon__svg {
     width: 22px;
     height: 22px;

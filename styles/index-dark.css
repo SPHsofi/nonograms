@@ -89,9 +89,15 @@
   background-color: var(--game-fill-color);
 }
 
+.level__btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .star__btn {
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
 }
 
 .level__btn .star__btn:first-child {

@@ -302,6 +302,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 1;
+  bottom: 0;
   top: 0;
   width: 100%;
   height: 100%;
@@ -370,7 +371,7 @@
 @media screen and (max-width: 1200px) {
 
   .modal-win__wrapper {
-    width: 400px;
+    width: 360px;
     gap: 20px;
     padding: 15px;
   }
@@ -392,7 +393,7 @@
 
   .modal-exit__btn {
     padding: 5px 15px;
-    font: 400 24px/125% 'san serif';
+    font: 24px;
   }
 
   .head__section {
@@ -452,6 +453,33 @@
 }
 
 @media screen and (max-width: 1000px) {
+
+  .modal-win__wrapper {
+    width: 320px;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .modal-title {
+    font-size: 28px;
+  }
+
+  .modal-text {
+    font-size: 22px;
+  }
+
+  .rating-index,
+  .rating-name,
+  .rating-time,
+  .modal-rating {
+    font-size: 20px;
+  }
+
+  .modal-exit__btn {
+    padding: 5px 15px;
+    font-size: 22px;
+  }
+
   .head__section {
     margin-bottom: 40px;
   }

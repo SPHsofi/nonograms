@@ -374,6 +374,11 @@
     margin-bottom: 60px;
   }
 
+  .star__btn {
+    width: 22px;
+    height: 22px;
+  }
+
   .timer {
     font-size: 25px;
   }
@@ -415,7 +420,7 @@
   .column-hints {
     gap: 5px;
   }
-  
+
   .row-hints {
     gap: 15px;
   }
@@ -424,6 +429,11 @@
 @media screen and (max-width: 1000px) {
   .head__section {
     margin-bottom: 40px;
+  }
+
+  .star__btn {
+    width: 20px;
+    height: 20px;
   }
 
   .timer {
@@ -465,16 +475,92 @@
     display: flex;
     gap: 3px;
   }
-  
+
   .row-hints {
     display: flex;
     gap: 12px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .hints__span {
+@media screen and (max-width: 930px) {
+  .moon__svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .star__btn {
+    width: 17px;
+    height: 17px;
+  }
+
+  .timer {
+    font-size: 20px;
+  }
+
+  .level__btn,
+  .random__btn,
+  .pic__btn,
+  .result__btn,
+  .select-level,
+  .refresh__btn,
+  .save__btn,
+  .continue__btn {
+    padding: 6px 6px;
+    font-size: 16px;
+  }
+
+  .visible {
     font-size: 18px;
+    margin-top: 45px;
+    padding: 15px;
+    max-height: 220px;
+  }
+
+  .title {
+    padding: 10px;
+  }
+
+  .game__section {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px max-content 50px;
+    grid-template-areas:
+      'info'
+      'gameFill'
+      'gameBtn';
+  }
+
+  .label-pic {
+    font-size: 28px;
+  }
+
+  .timer {
+    margin: 10px 0;
+  }
+
+  .game-wrapper__btn {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: max-content max-content;
+    grid-template-areas:
+      'timer . .'
+      'button button button';
+  }
+
+  .timer-wrapper {
+    grid-area: timer;
+  }
+
+  .refresh-result-wrapper__btn {
+    flex-direction: row;
+    gap: 20px;
+    grid-area: button;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 796px) {
+  .hints__span {
+    font-size: 16px;
   }
 }
 

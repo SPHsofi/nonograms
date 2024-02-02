@@ -26,7 +26,7 @@ headSection.className = 'head__section section';
 // export const timerTag = timerSection.querySelector('.timer');
 
 const levelDiv = createCheckbox();
-let gameSection = createGameSection(pics[0].pic, "repeat(5, 3vw)");
+let gameSection = createGameSection(pics[0].pic, "repeat(5, 2.5vw)");
 let optionSection = createSelectUl();
 let infoWrapper = createInfoWrapper(pics[0].name);
 const audioSection = createAudioSection();
@@ -52,11 +52,11 @@ export function renderInfoGame(name) {
 export function renderField(array, number) {
   main.removeChild(gameSection)
   if (number == 5) {
-    gameSection = createGameSection(array, "repeat(5, 3vw)");
+    gameSection = createGameSection(array, "repeat(5, 2.5vw)");
   } else if (number == 10) {
-    gameSection = createGameSection(array, "repeat(10, 3vw)");
+    gameSection = createGameSection(array, "repeat(10, 2.5vw)");
   } else {
-    gameSection = createGameSection(array, "repeat(15, 3vw)");
+    gameSection = createGameSection(array, "repeat(15, 2.5vw)");
   }
   main.appendChild(gameSection)
 }

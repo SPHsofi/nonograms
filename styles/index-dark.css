@@ -2,7 +2,9 @@
   --background-color: #020202;
   --text-color: #ffffff;
   --accent-color: #BCFD4C;
-  --game-fill-color: #868686;
+  /* --game-fill-color: #868686; */
+  --game-fill-color: #bcbcbc;
+  --active-btn: #7d7d7d;
 }
 
 .main {
@@ -260,7 +262,7 @@ grid-area: gameBtn;
 }
 
 .btn__active {
-  background-color: var(--text-color);
+  background-color: var(--active-btn);
 }
 
 .btn__cross {
@@ -281,7 +283,7 @@ grid-area: gameBtn;
 }
 
 .modal-visible__section {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   z-index: 1;
   left: 0;
@@ -295,8 +297,9 @@ grid-area: gameBtn;
   border: 2px solid var(--text-color);
   background-color: var(--background-color);
   width: 400px;
-  height: 300px;
-  justify-content: space-evenly;
+  gap: 15px;
+  padding: 15px;
+  /* justify-content: space-evenly; */
   color: var(--text-color);
 }
 
@@ -324,12 +327,37 @@ grid-area: gameBtn;
   background-color: var(--accent-color);
 }
 
-.modal-pics__btn {
-  border: none;
-  background-color: var(--accent-color);
-  padding: 15px 15px;
-  cursor: pointer;
-  font: 24px/125% 'san serif';
+
+.rating-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  background-color: var(--game-fill-color);
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+.rating-index {
+  justify-self: center;
+}
+
+.rating-name {
+  justify-self: start;
+}
+
+.rating-time {
+  justify-self: end;
+}
+
+.modal-rating {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.rating-index,
+.rating-name,
+.rating-time {
+  margin: 10px;
 }
 
 @media screen and (max-width: 1050px) {

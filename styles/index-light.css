@@ -67,7 +67,7 @@
 
 .level__btn,
 .random__btn,
-.pic__btn, 
+.pic__btn,
 .result__btn,
 .select-level,
 .refresh__btn,
@@ -170,7 +170,7 @@
 }
 
 .game-wrapper__btn {
-grid-area: gameBtn;
+  grid-area: gameBtn;
 }
 
 .refresh-result-wrapper__btn {
@@ -200,7 +200,7 @@ grid-area: gameBtn;
   grid-template-areas:
     '. columns'
     'rows game';
-    justify-content: center;
+  justify-content: center;
 }
 
 .columns {
@@ -224,13 +224,13 @@ grid-area: gameBtn;
   border-right: 1px solid;
 }
 
-.grid-10-10 .btn:nth-child(n+41):nth-child(-n+50)  {
+.grid-10-10 .btn:nth-child(n+41):nth-child(-n+50) {
   border-bottom: 2px solid var(--text-color);
 }
 
 .grid-15-15 .btn:nth-child(n+61):nth-child(-n+75),
 .grid-15-15 .btn:nth-child(n+136):nth-child(-n+150) {
-    border-bottom: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
 }
 
 .column-hints,
@@ -300,11 +300,12 @@ grid-area: gameBtn;
 
 .modal-win__wrapper {
   flex-direction: column;
-  border: 2px solid var(--text-color);
   background-color: var(--background-color);
   width: 400px;
-  height: 300px;
-  justify-content: space-evenly;
+  gap: 15px;
+  padding: 15px;
+  /* justify-content: space-evenly; */
+  border-radius: 5px;
 }
 
 .modal-title {
@@ -326,18 +327,42 @@ grid-area: gameBtn;
   font: 400 30px/125% 'san serif';
 }
 
-.modal-pics__btn {
-  border: none;
-  background-color: var(--accent-color);
-  padding: 15px 15px;
-  cursor: pointer;
-  font: 24px/125% 'san serif';
+.rating-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  background-color: var(--game-fill-color);
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+.rating-index {
+  justify-self: center;
+}
+
+.rating-name {
+  justify-self: start;
+}
+
+.rating-time {
+  justify-self: end;
+}
+
+.modal-rating {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.rating-index,
+.rating-name,
+.rating-time {
+  margin: 10px;
 }
 
 @media screen and (max-width: 1050px) {
   .head__section {
     margin-bottom: 60px;
-}
+  }
 }
 
 @media screen and (max-width: 900px) {

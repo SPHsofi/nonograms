@@ -23,10 +23,16 @@ export function createModalWin() {
   buttonExit.textContent = 'Exit';
 
   buttonExit.addEventListener('click', () => {
+    window.isGame = false;
+
     const gameBtn = document.querySelectorAll('.btn');
     gameBtn.forEach((btn) => {
       btn.disabled = true;
     })
+
+    const save = document.querySelector('.save__btn');
+    save.classList.add('save__btn-disabled');
+    save.disabled = true;
 
     const exitSound = document.querySelector('.exit__audio');
     exitSound.play();

@@ -285,13 +285,9 @@
   background-color: var(--active-btn);
 }
 
-.btn__cross {
-  font-size: 25px;
-  padding: 0;
-}
-
 .btn__cross::after {
   content: 'X';
+  font-size: 2vw;
 }
 
 /* Modal section */

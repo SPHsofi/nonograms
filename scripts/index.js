@@ -16,7 +16,7 @@ const muteThemeWrapper = document.createElement('div');
 muteThemeWrapper.className = 'mute-theme-wrapper';
 
 const levelDiv = createCheckbox();
-let gameSection = createGameSection(pics[0].pic, "repeat(5, 2.5vw)");
+let gameSection = createGameSection(pics[0].pic, "repeat(5, 2.5vmax)");
 let optionSection = createSelectUl();
 let infoWrapper = createInfoWrapper(pics[0].name);
 const audioSection = createAudioSection();
@@ -44,11 +44,11 @@ export function renderInfoGame(name) {
 export function renderField(array, number) {
   main.removeChild(gameSection)
   if (number == 5) {
-    gameSection = createGameSection(array, "repeat(5, 2.5vw)");
+    gameSection = createGameSection(array, "repeat(5, 2.5vmax)");
   } else if (number == 10) {
-    gameSection = createGameSection(array, "repeat(10, 2.5vw)");
+    gameSection = createGameSection(array, "repeat(10, 2.5vmax)");
   } else {
-    gameSection = createGameSection(array, "repeat(15, 2.5vw)");
+    gameSection = createGameSection(array, "repeat(15, 2.5vmax)");
   }
   main.appendChild(gameSection)
 }

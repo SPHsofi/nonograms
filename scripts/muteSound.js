@@ -1,5 +1,3 @@
-import { changeTheme } from "./theme.js";
-
 export function muteAudioWrapper() {
   const muteAudioWrapper = document.createElement('div');
   muteAudioWrapper.className = 'mute-wrapper__audio';

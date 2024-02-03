@@ -263,10 +263,15 @@
   border-bottom: 1px solid var(--text-color);
 }
 
+.column-hints,
+.row-hints {
+  font-size: 2vw;
+  font-weight: 600;
+}
+
 .row-hints:nth-child(5n) {
   border-bottom: 2px solid var(--text-color);
 }
-
 
 .row-hints:last-child {
   border-bottom: none;
@@ -277,12 +282,10 @@
 }
 
 .row-hints .hints__span {
-  font: 600 24px/125% 'san serif';
   padding: 0 10px;
 }
 
 .column-hints .hints__span {
-  font: 600 24px/125% 'san serif';
   padding: 5px 0;
 }
 
@@ -457,16 +460,12 @@
     font-size: 35px;
   }
 
-  .hints__span {
-    font-size: 22px;
+  .row-hints .hints__span {
+    padding: 0 8px;
   }
 
-  .column-hints {
-    gap: 5px;
-  }
-
-  .row-hints {
-    gap: 15px;
+  .column-hints .hints__span {
+    padding: 4px 0;
   }
 }
 
@@ -540,18 +539,12 @@
     padding: 14px;
   }
 
-  .hints__span {
-    font-size: 18px;
+  .column-hints .hints__span {
+    padding: 2px 0;
   }
 
-  .column-hints {
-    display: flex;
-    gap: 3px;
-  }
-
-  .row-hints {
-    display: flex;
-    gap: 12px;
+  .row-hints .hints__span {
+    padding: 0 6px;
   }
 }
 
@@ -659,13 +652,7 @@
   }
 }
 
-@media screen and (max-width: 796px) {
-  .hints__span {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 720px) {
 
   .modal-win__wrapper {
     width: 215px;
@@ -718,6 +705,10 @@
 
   .timer {
     font-size: 18px;
+  }
+
+  .level-wrapper__btn {
+    gap: 10px;
   }
 
   .level__btn,
@@ -784,6 +775,6 @@
   }
 
   .hints__span {
-    font-size: 12px;
+    font-size: 2.5vw;
   }
 }

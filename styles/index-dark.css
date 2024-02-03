@@ -31,13 +31,8 @@
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: 'theme level select';
+  grid-template-areas: 'btn level select';
   margin-bottom: 80px;
-}
-
-.theme-wrapper {
-  grid-area: theme;
-  text-align: center;
 }
 
 .theme__btn {
@@ -48,7 +43,17 @@
   cursor: pointer;
 }
 
-.moon__svg {
+.mute-theme-wrapper {
+  grid-area: btn;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.moon__svg,
+.sound__btn {
   width: 35px;
   height: 35px;
 }
@@ -153,11 +158,12 @@
 }
 
 .pic__btn,
-.continue__btn {
-  order: 0;
+.continue__btn,
+.mute__btn {
   border: 2px solid var(--accent-color);
   background: none;
   color: var(--text-color);
+  border-radius: 5px;
 }
 
 .timer-wrapper {
@@ -425,7 +431,8 @@
     font-size: 22px;
   }
 
-  .moon__svg {
+  .moon__svg,
+  .sound__btn {
     width: 30px;
     height: 30px;
   }
@@ -520,7 +527,8 @@
     font-size: 20px;
   }
 
-  .moon__svg {
+  .moon__svg,
+  .sound__btn {
     width: 27px;
     height: 27px;
   }
@@ -574,7 +582,8 @@
     font-size: 16px;
   }
 
-  .moon__svg {
+  .moon__svg,
+  .sound__btn {
     width: 22px;
     height: 22px;
   }
@@ -683,6 +692,7 @@
   .modal-exit__btn {
     font-size: 14px;
   }
+
   .theme__btn {
     padding: 5px 20px;
   }
@@ -691,7 +701,8 @@
     margin-bottom: 25px;
   }
 
-  .moon__svg {
+  .moon__svg,
+  .sound__btn {
     width: 20px;
     height: 20px;
   }
@@ -739,7 +750,8 @@
     padding: 5px 10px;
   }
 
-  .moon__svg {
+  .moon__svg,
+  .sound__btn {
     width: 17px;
     height: 17px;
   }

@@ -22,11 +22,11 @@ function createMuteButton() {
 
   muteBtn.addEventListener('click', () => {
     if (isMuted) {
-      svgSound.src = `images/sound-on-${window.theme}.svg`;
+      svgSound.src = svgSound.src.replace('sound-off', 'sound-on');
       unMuteSound();
       isMuted = false;
     } else {
-      svgSound.src = `images/sound-off-${window.theme}.svg`;
+      svgSound.src = svgSound.src.replace('sound-on', 'sound-off');
       muteSound();
       isMuted = true;
     }
@@ -37,7 +37,7 @@ function createMuteButton() {
 function createSoundSvg() {
   const svgSound = document.createElement('img');
   svgSound.className = 'sound__img';
-    svgSound.src = `images/sound-on-${window.theme}.svg`;
+  svgSound.src = `images/sound-on-light.svg`;
   return svgSound;
 }
 

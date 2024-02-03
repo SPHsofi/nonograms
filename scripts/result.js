@@ -29,10 +29,10 @@ function randomGameBtn() {
   randomBtn.onclick = function () {
     soundPlay();
 
+    window.isGame = true;
     window.winIndex = 0;
     timer.seconds = 0;
     timer.counter = 0;
-    console.log(timer.isStart)
     timer.renderTimer(document.querySelector('.timer'));
 
     const randomIndex = Math.floor(Math.random() * pics.length);
@@ -96,6 +96,7 @@ function restartGameFillBtn() {
   refreshBtn.addEventListener('click', () => {
     soundPlay();
     refreshGameFill();
+    window.isGame = true;
   });
 
   return refreshBtn;
@@ -164,6 +165,7 @@ function continueGameBtn() {
   continueBtn.addEventListener('click', () => {
     soundPlay();
     continueGame();
+    window.isGame = true;
   })
 
   return continueBtn;

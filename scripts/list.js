@@ -110,6 +110,7 @@ function handleImageClick(event) {
       timer.seconds = 0;
       timer.counter = 0;
       timer.renderTimer(document.querySelector('.timer'));
+      window.isGame = true;
       return item;
     });
     renderField(gameFieds, selectedImage.size);

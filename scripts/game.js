@@ -187,8 +187,7 @@ function game(gameFill, array) {
 
   buttons.forEach((btn, index) => {
     btn.addEventListener('contextmenu', (e) => {
-      if (isGame) {
-        console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`);
+      if (window.isGame) {
 
         const crossSound = document.querySelector('.cross__audio');
         crossSound.play();
@@ -202,9 +201,7 @@ function game(gameFill, array) {
 
   buttons.forEach((btn, index) => {
     btn.addEventListener('click', () => {
-      if (isGame) {
-        console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`);
-
+      if (window.isGame) {
         const selectSound = document.querySelector('.select__audio');
         selectSound.play();
 

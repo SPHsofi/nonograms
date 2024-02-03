@@ -62,5 +62,4 @@ function renderLevel(levels) {
 }
 
 toggleSortArray(levelDiv, renderLevel);
-
 document.body.appendChild(main);

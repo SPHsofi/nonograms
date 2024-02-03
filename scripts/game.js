@@ -292,9 +292,7 @@ function winModal(trueClick) {
       const modal = document.querySelector('.modal-win__section');
       modal.classList.replace('modal-win__section', 'modal-visible__section');
 
-      setTimeout(() => {
         updateRatingTable();
-      }, 0);
     }, 200);
   }
   timer.startTimer(timerTag);

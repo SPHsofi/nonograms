@@ -38,7 +38,7 @@ function createMuteButton() {
 
 function createSoundSvg() {
   const svgSound = document.createElement('img');
-  svgSound.className = 'sound__btn';
+  svgSound.className = 'sound__img';
     svgSound.src = `images/sound-on-${window.theme}.svg`;
   return svgSound;
 }

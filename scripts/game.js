@@ -180,76 +180,129 @@ function countTrueClicks(array) {
 }
 
 function game(gameFill, array) {
+  window.isGame = true;
   window.winIndex = 0;
   const buttons = gameFill.querySelectorAll('.btn');
-
-  buttons.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-      const selectSound = document.querySelector('.select__audio');
-      selectSound.play();
-      if (array.flat()[index].isShouldClick) {
-        if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
-          btn.classList.add('btn__active');
-          ++winIndex;
-        }
-        else if (btn.classList.contains('btn__active')) {
-          btn.classList.remove('btn__active');
-          --winIndex;
-        }
-      } else {
-        if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
-          btn.classList.add('btn__active');
-          --winIndex;
-        }
-        else if (btn.classList.contains('btn__cross')) {
-          return;
-        }
-        else {
-          btn.classList.remove('btn__active');
-          ++winIndex;
-        }
-      }
-
-      const trueClick = countTrueClicks(array);
-      // console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`);
-      if (winIndex === trueClick) {
-        saveWinGame();
-        setTimeout(() => {
-          const winSound = document.querySelector('.win__audio');
-          winSound.play();
-
-          timer.stopTimer();
-          timer.isStart = false;
-
-          const modalSection = createModalWin();
-          document.body.appendChild(modalSection);
-
-          const modal = document.querySelector('.modal-win__section');
-          modal.classList.replace('modal-win__section', 'modal-visible__section');
-
-          setTimeout(() => {
-            updateRatingTable();
-          }, 0);
-        }, 200);
-      }
-      timer.startTimer(timerTag);
-      timer.isStart = true;
-    })
-  })
+  const trueClick = countTrueClicks(array);
 
   buttons.forEach((btn, index) => {
     btn.addEventListener('contextmenu', (e) => {
-      const crossSound = document.querySelector('.cross__audio');
-      crossSound.play();
-      e.preventDefault();
-      if (!btn.classList.contains('btn__cross') && !btn.classList.contains('btn__active')) {
-        btn.classList.add('btn__cross');
-      }
-      else {
-        btn.classList.remove('btn__cross');
+      if (isGame) {
+        console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`);
+
+        const crossSound = document.querySelector('.cross__audio');
+        crossSound.play();
+        e.preventDefault();
+
+        contextmenuEvent(array, index, btn, trueClick);
+        winModal(trueClick);
       }
     })
   })
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      if (isGame) {
+        console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`);
+
+        const selectSound = document.querySelector('.select__audio');
+        selectSound.play();
+
+        clickEvent(array, index, btn, trueClick);
+        winModal(trueClick);
+      }
+
+    })
+  })
+}
+
+function contextmenuEvent(array, index, btn) {
+  // rigth -> нет классов
+  if (!btn.classList.contains('btn__cross') && !btn.classList.contains('btn__active')) {
+    btn.classList.add('btn__cross');
+  }
+  // rigth -> btn__cross
+  else if (btn.classList.contains('btn__cross')) {
+    btn.classList.remove('btn__cross');
+  }
+  else if (btn.classList.contains('btn__active')) {
+    // rigth -> true -> есть класс btn__active 
+    if (array.flat()[index].isShouldClick) {
+      btn.classList.remove('btn__active');
+      btn.classList.add('btn__cross');
+      --winIndex;
+    }
+    // rigth -> false -> есть класс btn__active 
+    else {
+      btn.classList.remove('btn__active');
+      btn.classList.add('btn__cross');
+      ++winIndex;
+    }
+  }
+}
+
+function clickEvent(array, index, btn) {
+  if (array.flat()[index].isShouldClick) {
+    // left -> true -> нет классов
+    if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
+      btn.classList.add('btn__active');
+      ++winIndex;
+    }
+    // left -> true -> есть класс btn__active
+    else if (btn.classList.contains('btn__active')) {
+      btn.classList.remove('btn__active');
+      --winIndex;
+    }
+    // left -> true -> есть класс btn__cross
+    else if (btn.classList.contains('btn__cross')) {
+      btn.classList.remove('btn__cross');
+      btn.classList.add('btn__active');
+      ++winIndex;
+    }
+  }
+  // left -> false -> нет классов
+  else {
+    if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
+      btn.classList.add('btn__active');
+      --winIndex;
+    }
+    // left -> false -> есть класс btn__cross
+    else if (btn.classList.contains('btn__cross')) {
+      btn.classList.remove('btn__cross');
+      btn.classList.add('btn__active');
+      --winIndex;
+    }
+    // left -> false -> есть класс btn__active
+    else if (btn.classList.contains('btn__active')) {
+      btn.classList.remove('btn__active');
+      ++winIndex;
+    }
+  }
+}
+
+function winModal(trueClick) {
+  if (winIndex === trueClick) {
+    saveWinGame();
+    setTimeout(() => {
+      const winSound = document.querySelector('.win__audio');
+      winSound.play();
+
+      timer.stopTimer();
+      timer.isStart = false;
+
+      const modalSection = createModalWin();
+      document.body.appendChild(modalSection);
+
+      const modal = document.querySelector('.modal-win__section');
+      modal.classList.replace('modal-win__section', 'modal-visible__section');
+
+      setTimeout(() => {
+        updateRatingTable();
+      }, 0);
+    }, 200);
+  }
+  timer.startTimer(timerTag);
+  timer.isStart = true;
 }
 
 function saveWinGame() {
@@ -261,6 +314,6 @@ function saveWinGame() {
   const picLs = JSON.parse(localStorage.getItem('winGame')) || [];
 
   picLs.push(winGame);
-  picLs.sort((a,b) => +a.time - +b.time);
+  picLs.sort((a, b) => +a.time - +b.time);
   localStorage.setItem('winGame', JSON.stringify(picLs));
 }

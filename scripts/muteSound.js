@@ -1,3 +1,5 @@
+import { changeTheme } from "./theme.js";
+
 export function muteAudioWrapper() {
   const muteAudioWrapper = document.createElement('div');
   muteAudioWrapper.className = 'mute-wrapper__audio';
@@ -13,28 +15,32 @@ export function muteAudioWrapper() {
 
 function createMuteButton() {
   let isMuted = false;
+  let svgSound = createSoundSvg();
 
   const muteBtn = document.createElement('button');
   muteBtn.classList.add('mute__btn');
 
-  const svgSound = document.createElement('img');
-  svgSound.className = 'sound__btn';
-  svgSound.src = 'images/sound-on-light.svg';
-
   muteBtn.appendChild(svgSound);
-  
+
   muteBtn.addEventListener('click', () => {
     if (isMuted) {
-      svgSound.src = 'images/sound-on-light.svg';
+      svgSound.src = `images/sound-on-${window.theme}.svg`;
       unMuteSound();
       isMuted = false;
     } else {
-      svgSound.src = 'images/sound-off-light.svg';
+      svgSound.src = `images/sound-off-${window.theme}.svg`;
       muteSound();
       isMuted = true;
     }
   })
   return muteBtn;
+}
+
+function createSoundSvg() {
+  const svgSound = document.createElement('img');
+  svgSound.className = 'sound__btn';
+    svgSound.src = `images/sound-on-${window.theme}.svg`;
+  return svgSound;
 }
 
 function muteSound() {

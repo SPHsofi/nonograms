@@ -85,3 +85,10 @@ function ratingTable() {
 
   return ratingWrapper;
 }
+
+
+export function updateRatingTable() {
+  const ratingWrapperT = document.querySelector('.rating-wrapper');
+  const newRating = ratingTable();
+  ratingWrapperT.replaceWith(newRating); 
+}

@@ -1,6 +1,5 @@
-import { createModalWin } from "./modalWin.js";
+import { createModalWin, updateRatingTable } from "./modalWin.js";
 import { timer } from "./timer.js";
-// import { timerTag } from "./index.js";
 import { createTimer } from "./timer.js";
 import { refreshResultWrapper } from "./result.js";
 
@@ -188,7 +187,6 @@ function game(gameFill, array) {
     btn.addEventListener('click', () => {
       const selectSound = document.querySelector('.select__audio');
       selectSound.play();
-      // true
       if (array.flat()[index].isShouldClick) {
         if (!btn.classList.contains('btn__active') && !btn.classList.contains('btn__cross')) {
           btn.classList.add('btn__active');
@@ -213,7 +211,7 @@ function game(gameFill, array) {
       }
 
       const trueClick = countTrueClicks(array);
-      console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`)
+      // console.log(`Для выйгрыша надо набрать - ${winIndex}/${trueClick}`);
       if (winIndex === trueClick) {
         saveWinGame();
         setTimeout(() => {
@@ -228,6 +226,10 @@ function game(gameFill, array) {
 
           const modal = document.querySelector('.modal-win__section');
           modal.classList.replace('modal-win__section', 'modal-visible__section');
+
+          setTimeout(() => {
+            updateRatingTable();
+          }, 0);
         }, 200);
       }
       timer.startTimer(timerTag);

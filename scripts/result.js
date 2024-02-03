@@ -87,6 +87,7 @@ function showResult() {
   });
   timer.stopTimer();
   timer.isStart = false;
+  window.isGame = false;
 }
 
 // Кнопка "Перезапустить игру"

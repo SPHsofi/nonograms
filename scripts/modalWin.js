@@ -63,7 +63,8 @@ function ratingTable() {
   ratingWrapper.className = 'rating-wrapper';
 
   const ratingTableLs = JSON.parse(localStorage.getItem('winGame'));
-  const ratingTable = ratingTableLs.slice(0, 5);
+  const ratingFive = ratingTableLs.slice(-5);
+  const ratingTable = ratingFive.sort((a, b) => +a.time - +b.time);
 
   const ratingText = document.createElement('p');
   ratingText.className = 'modal-rating';

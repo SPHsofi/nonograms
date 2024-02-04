@@ -3,7 +3,7 @@
   --text-color: #ffffff;
   --accent-color: #BCFD4C;
   --game-fill-color: #8d8d8d;
-  --active-btn: #5e5e5e;
+  --active-btn: #333333;
 }
 
 .main {
@@ -331,6 +331,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--background-color);
+  border: 1px solid var(--text-color);
   width: max-content;
   height: max-content;
   gap: 20px;
@@ -365,7 +366,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr ;
   background-color: var(--game-fill-color);
   border-radius: 5px;
-  max-width: 80%;
+  margin: 0 20px;
+  width: max-content;
 }
 
 .rating-index {
@@ -570,6 +572,10 @@
   .modal-win__wrapper {
     gap: 10px;
     padding: 10px;
+  }
+  
+  .rating-wrapper {
+    margin: 0 10px;
   }
 
   .modal-title {

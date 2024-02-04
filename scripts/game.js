@@ -2,6 +2,7 @@ import { createModalWin, updateRatingTable } from "./modalWin.js";
 import { timer } from "./timer.js";
 import { createTimer } from "./timer.js";
 import { refreshResultWrapper } from "./result.js";
+import { pics } from "./pics.js";
 
 const timerSection = createTimer();
 const timerTag = timerSection.querySelector('.timer');
@@ -299,12 +300,16 @@ function winModal(trueClick) {
 function saveWinGame() {
   const winGame = {
     time: timer.counter,
-    name: document.querySelector('.label-pic').textContent
+    name: document.querySelector('.label-pic').textContent,
+    level: null
   }
+
+  const foundPic = pics.find(pic => pic.name === winGame.name);
+  winGame.level = foundPic.level;
 
   const picLs = JSON.parse(localStorage.getItem('winGame')) || [];
 
   picLs.push(winGame);
-  picLs.sort((a, b) => +a.time - +b.time);
+  // picLs.sort((a, b) => +a.time - +b.time);
   localStorage.setItem('winGame', JSON.stringify(picLs));
 }

@@ -37,7 +37,7 @@ export function createModalWin() {
     const exitSound = document.querySelector('.exit__audio');
     exitSound.play();
 
-    modalSection.classList.replace('modal-visible__section', 'modal-win__section');
+    document.body.removeChild(modalSection);
     timer.isStart = false;
     timer.seconds = 0;
     timer.counter = 0;

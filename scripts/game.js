@@ -289,10 +289,7 @@ function winModal(trueClick) {
       const modalSection = createModalWin();
       document.body.appendChild(modalSection);
 
-      const modal = document.querySelector('.modal-win__section');
-      modal.classList.replace('modal-win__section', 'modal-visible__section');
-
-        updateRatingTable();
+      updateRatingTable();
     }, 200);
   }
   timer.startTimer(timerTag);

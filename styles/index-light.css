@@ -310,14 +310,8 @@
 }
 
 /* Modal section */
-.modal-visible__section,
-.modal-win__wrapper {
+.modal-win__section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-visible__section {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 1;
@@ -325,12 +319,18 @@
   top: 0;
   width: 100%;
   height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-win__wrapper {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: var(--background-color);
-  width: 400px;
+  width: max-content;
+  height: max-content;
   gap: 20px;
   padding: 15px;
   border-radius: 5px;
@@ -391,7 +391,6 @@
 @media screen and (max-width: 1200px) {
 
   .modal-win__wrapper {
-    width: 360px;
     gap: 20px;
     padding: 15px;
   }
@@ -472,7 +471,6 @@
 @media screen and (max-width: 1000px) {
 
   .modal-win__wrapper {
-    width: 320px;
     gap: 15px;
     padding: 15px;
   }
@@ -551,7 +549,6 @@
 @media screen and (max-width: 930px) {
 
   .modal-win__wrapper {
-    width: 250px;
     gap: 10px;
     padding: 10px;
   }
@@ -655,7 +652,6 @@
 @media screen and (max-width: 720px) {
 
   .modal-win__wrapper {
-    width: 215px;
     gap: 10px;
     padding: 10px;
   }

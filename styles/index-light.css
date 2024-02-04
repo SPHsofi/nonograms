@@ -359,7 +359,7 @@
 
 .rating-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   background-color: var(--game-fill-color);
   border-radius: 5px;
   max-width: 80%;
@@ -373,6 +373,11 @@
   justify-self: start;
 }
 
+.rating-level {
+  justify-self: center;
+  margin: 10px;
+}
+
 .rating-time {
   justify-self: end;
 }
@@ -384,7 +389,8 @@
 
 .rating-index,
 .rating-name,
-.rating-time {
+.rating-time,
+.rating-level {
   margin: 10px;
 }
 
@@ -406,7 +412,8 @@
   .rating-index,
   .rating-name,
   .rating-time,
-  .modal-rating {
+  .modal-rating,
+  .rating-level {
     font-size: 22px;
   }
 
@@ -486,7 +493,8 @@
   .rating-index,
   .rating-name,
   .rating-time,
-  .modal-rating {
+  .modal-rating,
+  .rating-level {
     font-size: 20px;
     margin: 10px;
   }
@@ -564,7 +572,8 @@
   .rating-index,
   .rating-name,
   .rating-time,
-  .modal-rating {
+  .modal-rating,
+  .rating-level {
     font-size: 14px;
     margin: 7px;
   }
@@ -667,7 +676,8 @@
   .rating-index,
   .rating-name,
   .rating-time,
-  .modal-rating {
+  .modal-rating,
+  .rating-level {
     font-size: 12px;
     margin: 5px;
   }

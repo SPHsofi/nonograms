@@ -80,12 +80,17 @@ function ratingTable() {
     ratingName.className = 'rating-name';
     ratingName.textContent = el.name;
 
+    const ratingLevel = document.createElement('p');
+    ratingLevel.className = 'rating-level';
+    ratingLevel.textContent = el.level;
+
     const ratingTime = document.createElement('p');
     ratingTime.className = 'rating-time';
     ratingTime.textContent = `${el.time} sec`;
 
     ratingWrapper.append(ratingIndex);
     ratingWrapper.append(ratingName);
+    ratingWrapper.append(ratingLevel);
     ratingWrapper.append(ratingTime);
   });
 

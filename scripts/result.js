@@ -123,6 +123,7 @@ function refreshGameFill() {
     btn.disabled = false;
   })
   window.winIndex = 0;
+  timer.isStart = false;
   timer.stopTimer();
   timer.seconds = 0;
   timer.counter = 0;
